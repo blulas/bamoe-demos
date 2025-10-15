@@ -3,8 +3,8 @@
 ################################################
 
 @local.host.url = http://localhost:8080
-@remote.host.url = https://process-service-bamoe-instructor-labs.apps-crc.testing
-@host={{local.host.url}}
+@remote.host.url = https://process-service-bamoe-demos.apps-crc.testing
+@host={{remote.host.url}}
 @contentType = application/json
 
 ############################################

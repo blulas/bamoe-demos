@@ -3,7 +3,7 @@
 ################################################
 
 @local.host.url = http://localhost:8080
-@remote.host.url = https://bamoe-decision-labs-stp-orchestration-service-bamoe-apps.apps.ocp.ibm.edu
+@remote.host.url = https://stp-orchestration-service-bamoe-demos.apps-crc.testing
 @host={{remote.host.url}}
 @contentType = application/json
 
