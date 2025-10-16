@@ -3,7 +3,7 @@
 ################################################
 
 @local.host.url = http://localhost:8080
-@remote.host.url = https://decision-model-service-bamoe-instructor-labs.apps-crc.testing
+@remote.host.url = https://decision-model-service-bamoe-demos.apps-crc.testing
 @host={{remote.host.url}}
 @contentType = application/json
 
