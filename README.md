@@ -1,7 +1,7 @@
 # IBM Business Automation Manager Open Editions (IBM BAMOE) Demos
 
 # Overview
-This repository includes a set of BAMOE demos.
+This repository includes a set of BAMOE demos, fully deployable and testable on Red Hat OpenShift or Kubernetes.
 
 ## Repository Modules
 This is a multi-module repository, with the following modules:
