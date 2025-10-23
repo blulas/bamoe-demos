@@ -6,16 +6,33 @@ This repository includes a set of BAMOE demos.
 ## Repository Modules
 This is a multi-module repository, with the following modules:
 
-- [**Fact Model**](./fact-model) is a Maven library containing all reusable Java classes, used by decisions labs
-- [**Classic Decision Service**](./classic-decision-service) is an example of a classic-mode decision service.
-- [**Kogito Decision Service**](./decision-service) is an example of a Kogito decision service.
-- [**Kogito Decision Model Service**](./decision-model-service) is an example of a Kogito decision model (DMN) service.
-- [**Event Driven Kogito Decision Service**](./event-driven-decision-service) is an example of a Kafka event-driven Kogito decision service.
-- [**STP Orchestration Service**](./stp-service) is an example of an orchestration service that utilizes straight-through-processing (STP) of external services.
-- [**Stateful Process Service**](./process-service) is an example of a stateful process service that utilizes process engine persistence, using stateless BPMN.
+### Sharable Demo Projets
+The following shared projects are available, in support of both Quarkus and Spring Boot demos:
+
+- [**Sharable Fact Model**](./fact-model) is a Maven library containing all shared Java classes, used by various demo projects.
+
+### Quarkus Demo Projects
+The following demos are based on the `IBM BAMOE Quarkus runtime`:
+
+- [**Quarkus Classic Rules Service**](./quarkus-classic-rules-service) is an example of a classic-mode rules service, based on the Quarkus runtime.
+- [**Quarkus Rules Service**](./quarkus-rules-service) is an example of a Kogito rules service, based on the Quarkus runtime.
+- [**Quarkus Decision Model Service**](./quarkus-decision-model-service) is an example of a Kogito decision model (DMN) service, based on the Quarkus runtime.
+- [**Quarkus Event Driven Rules Service**](./quarkus-event-driven-rules-service) is an example of a Kafka event-driven Kogito rules service, based on the Quarkus runtime.
+- [**Quarkus Stateless (STP) Service**](./quarkus-stp-service) is an example of a Kogito stateless process service that utilizes straight-through-processing (STP) of external services, based on the Quarkus runtime.
+- [**Quarkus Stateful Process Service**](./quarkus-process-service) is an example of a Kogito stateful process service that utilizes process engine persistence, using stateful BPMN, based on the Quarkus runtime.
+
+### Spring Boot Demo Projects _(under construction)_
+The following demos are based on the `IBM BAMOE Spring Boot runtime`:
+
+- [**Spring Boot Classic Rules Service**](./springboot-classic-rules-service) is an example of a classic-mode rules service, based on the Spring Boot runtime.
+- [**Spring Boot Rules Service**](./springboot-rules-service) is an example of a Kogito rules service, based on the Spring Boot runtime.
+- [**Spring Boot Decision Model Service**](./springboot-decision-model-service) is an example of a Kogito decision model (DMN) service, based on the Spring Boot runtime.
+- [**Spring Boot Event Driven Rules Service**](./springboot-event-driven-rules-service) is an example of a Kafka event-driven Kogito rules service, based on the Spring Boot runtime.
+- [**Spring Boot Stateless (STP) Service**](./springboot-stp-service) is an example of a Kogito stateless process service that utilizes straight-through-processing (STP) of external services, based on the Spring Boot runtime.
+- [**Spring Boot Stateful Process Service**](./springboot-process-service) is an example of a Kogito stateful process service that utilizes process engine persistence, using stateful BPMN, based on the Spring Boot runtime.
 
 ## Additional Information (*Appendicies*)
-This repository is focused on business automation using [**IBM Business Automation Manager Open Editions**](https://www.ibm.com/docs/en/ibamoe/9.2.x) products, specifically the IBM build of [**Kogito**](https://kogito.kie.org/) known as **IBM Decision Manager Open Edition (DMOE)** and **IBM Process Automation Manager Open Edition (PAMOE)**, leveraging [**Quarkus**](https://quarkus.io/) or [**Spring Boot** _(currently for Decisions only)_](https://spring.io/) as the assoicated container runtime.  The following online documentation is available in order to learn various aspects of these products and frameworks:
+This repository is focused on business automation using [**IBM Business Automation Manager Open Editions**](https://www.ibm.com/docs/en/ibamoe/9.3.x) products, specifically the IBM build of [**Kogito**](https://kogito.kie.org/) known as **IBM Decision Manager Open Edition (DMOE)** and **IBM Process Automation Manager Open Edition (PAMOE)**, leveraging [**Quarkus**](https://quarkus.io/) or [**Spring Boot**](https://spring.io/) as the assoicated container runtime.  The following online documentation is available in order to learn various aspects of these products and frameworks:
 
 - [**Apache Maven**](https://maven.apache.org/) is a free and open source software project management and comprehension tool. Based on  the concept of a project object model (POM), Maven can manage a project’s build, reporting and documentation from a central piece of  information. A **getting started guide** is available [here](http://maven.apache.org/guides/getting-started/).
 

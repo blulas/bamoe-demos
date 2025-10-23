@@ -8,11 +8,23 @@
 
   <modules>
       <module>fact-model</module>
-      <module>classic-decision-service</module>
-      <module>decision-model-service</module>
-      <module>decision-service</module>
-      <module>event-driven-decision-service</module>
-      <module>stp-orchestration-service</module>
-      <module>process-service</module>
+
+      <!-- Quarkus Demos -->
+      <module>quarkus-classic-rules-service</module>
+      <module>quarkus-rules-service</module>
+      <module>quarkus-decision-model-service</module>
+      <module>quarkus-event-driven-rules-service</module>
+      <module>quarkus-stateless-process-service</module>
+      <module>quarkus-stateful-process-service</module>
+
+      <!-- Spring Boot Demos (under construction) -->
+      <!--
+      <module>springboot-classic-rules-service</module>
+      <module>springboot-rules-service</module>
+      <module>springboot-decision-model-service</module>
+      <module>springboot-event-driven-rules-service</module>
+      <module>springboot-stateless-process-service</module>
+      <module>springboot-stateful-process-service</module>
+      -->
   </modules>
 </project>

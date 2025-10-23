@@ -1,0 +1,8 @@
+services:
+
+  quarkus-decision-model-service:
+    container_name: quarkus-decision-model-service
+    image: dev.local/bamoe-demos/quarkus-decision-model-service:1.0.0
+    platform: linux/amd64
+    ports:
+      - 8080:8080

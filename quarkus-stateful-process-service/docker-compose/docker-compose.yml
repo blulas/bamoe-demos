@@ -1,0 +1,10 @@
+services:
+
+  quarkus-stateful-process-service:
+    container_name: quarkus-stateful-process-service
+    image: dev.local/bamoe-demos/quarkus-stateful-process-service:1.0.0
+    platform: linux/amd64
+    ports:
+      - 8080:8080
+      
+  
