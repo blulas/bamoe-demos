@@ -10,6 +10,7 @@ This is a multi-module repository, with the following modules:
 The following shared projects are available, in support of both Quarkus and Spring Boot demos:
 
 - [**Sharable Fact Model**](./fact-model) is a Maven library containing all shared Java classes, used by various demo projects.
+- [**Watson Orchestrate & BAMOE**](./wxo-bamoe) is a combined demo of IBM Watson Orchestrate and BAMOE working in conjunction with each other.
 
 ### Quarkus Demo Projects
 The following demos are based on the `IBM BAMOE Quarkus runtime`:
@@ -38,6 +39,9 @@ The following diagram represents the typical, containerized architecture, for IB
 
 ## Additional Information (*Appendicies*)
 This repository is focused on business automation using [**IBM Business Automation Manager Open Editions**](https://www.ibm.com/docs/en/ibamoe/9.3.x) products, specifically the IBM build of [**Kogito**](https://kogito.kie.org/) known as **IBM Decision Manager Open Edition (DMOE)** and **IBM Process Automation Manager Open Edition (PAMOE)**, leveraging [**Quarkus**](https://quarkus.io/) or [**Spring Boot**](https://spring.io/) as the assoicated container runtime.  The following online documentation is available in order to learn various aspects of these products and frameworks:
+
+- [**IBM Watson Orchestrate**](https://www.ibm.com/products/watsonx-orchestrate)
+Your AI tools are only as productive as the technology behind them. IBM® watsonx Orchestrate® brings all your AI agents together—making them more efficient, more collaborative and easier to scale across your business.
 
 - [**Apache Maven**](https://maven.apache.org/) is a free and open source software project management and comprehension tool. Based on  the concept of a project object model (POM), Maven can manage a project’s build, reporting and documentation from a central piece of  information. A **getting started guide** is available [here](http://maven.apache.org/guides/getting-started/).
 
