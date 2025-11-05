@@ -4,11 +4,11 @@
 
 	<!-- POM -->
   	<groupId>com.ibm.techsales.bamoe.demos</groupId>
-	<artifactId>quarkus-classic-rules-service</artifactId>
+	<artifactId>quarkus-classic-decision-model-service</artifactId>
 	<version>1.0.0</version>
 	<packaging>jar</packaging>
-	<name>quarkus-classic-rules-service</name>
-	<description>BAMOE Demos: Quarkus Classic Rules Service</description>
+	<name>quarkus-classic-decision-model-service</name>
+	<description>BAMOE Demos: Quarkus Classic Decision Model Service</description>
 
     <!-- Global Properties -->
 	<properties>
@@ -112,28 +112,13 @@
 
 		<!-- Classic Engine Support -->
 		<dependency>
-      		<groupId>org.drools</groupId>
-      		<artifactId>drools-compiler</artifactId>
-    	</dependency>
-    
-		<dependency>
-      		<groupId>org.drools</groupId>
-      		<artifactId>drools-model-compiler</artifactId>
-    	</dependency>
-    
-		<dependency>
-      		<groupId>org.drools</groupId>
-      		<artifactId>drools-core</artifactId>
-    	</dependency>
-    
-		<dependency>
-			<groupId>org.drools</groupId>
-			<artifactId>drools-mvel</artifactId>
+			<groupId>org.kie</groupId>
+			<artifactId>kie-dmn-core</artifactId>
 		</dependency>
-
+    
 		<dependency>
-			<groupId>org.drools</groupId>
-			<artifactId>drools-decisiontables</artifactId>
+			<groupId>org.kie</groupId>
+			<artifactId>kie-api</artifactId>
 		</dependency>
 
 		<dependency>

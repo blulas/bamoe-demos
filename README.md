@@ -6,16 +6,24 @@ This repository includes a set of BAMOE demos, fully deployable and testable on 
 ## Repository Modules
 This is a multi-module repository, with the following modules:
 
+### BAMOE Assets
+The following public BAMOE assets are used for these demos:
+
+- [**BAMOE Setup**](https://github.com/bamoe/bamoe-setup) contains setup instructions as well as jump-start scripts useful in setting up BAMOE on your local machine.
+- [**BAMOE Maven**](https://github.com/bamoe/bamoe-maven) is a set of custom Maven Acclerators or Archetypes for creating projects for IBM Business Automation Manager Open Editions (BAMOE).
+- [**BAMOE Business Service API**](https://github.com/bamoe/bamoe-business-service-api) is a set of Java API's for implementing BAMOE Classic or Embedded Mode business services
+
 ### Sharable Demo Projets
 The following shared projects are available, in support of both Quarkus and Spring Boot demos:
 
-- [**Sharable Fact Model**](./fact-model) is a Maven library containing all shared Java classes, used by various demo projects.
+- [**Sharable Fact Model**](./shared-fact-model) is a Maven library containing all shared Java classes, used by various demo projects.
 - [**Watson Orchestrate & BAMOE**](./wxo-bamoe) is a combined demo of IBM Watson Orchestrate and BAMOE working in conjunction with each other.
 
 ### Quarkus Demo Projects
 The following demos are based on the `IBM BAMOE Quarkus runtime`:
 
 - [**Quarkus Classic Rules Service**](./quarkus-classic-rules-service) is an example of a classic-mode rules service, based on the Quarkus runtime.
+- [**Quarkus Classic Decision Model Service**](./quarkus-classic-decision-model-service) is an example of a classic-mode decision (DMN) service, based on the Quarkus runtime.
 - [**Quarkus Rules Service**](./quarkus-rules-service) is an example of a Kogito rules service, based on the Quarkus runtime.
 - [**Quarkus Decision Model Service**](./quarkus-decision-model-service) is an example of a Kogito decision model (DMN) service, based on the Quarkus runtime.
 - [**Quarkus Event Driven Rules Service**](./quarkus-event-driven-rules-service) is an example of a Kafka event-driven Kogito rules service, based on the Quarkus runtime.
@@ -26,6 +34,7 @@ The following demos are based on the `IBM BAMOE Quarkus runtime`:
 The following demos are based on the `IBM BAMOE Spring Boot runtime`:
 
 - [**Spring Boot Classic Rules Service**](./springboot-classic-rules-service) is an example of a classic-mode rules service, based on the Spring Boot runtime.
+- [**Spring Boot Classic Decision Model Service**](./springboot-classic-decision-model-service) is an example of a classic-mode decision (DMN) service, based on the Spring Boot runtime.
 - [**Spring Boot Rules Service**](./springboot-rules-service) is an example of a Kogito rules service, based on the Spring Boot runtime.
 - [**Spring Boot Decision Model Service**](./springboot-decision-model-service) is an example of a Kogito decision model (DMN) service, based on the Spring Boot runtime.
 - [**Spring Boot Event Driven Rules Service**](./springboot-event-driven-rules-service) is an example of a Kafka event-driven Kogito rules service, based on the Spring Boot runtime.

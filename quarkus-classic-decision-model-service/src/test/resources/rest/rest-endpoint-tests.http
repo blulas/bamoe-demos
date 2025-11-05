@@ -7,21 +7,21 @@
 @host={{local.host.url}}
 @contentType = application/json
 
-POST {{host}}/Traffic Violation HTTP/1.1
+POST {{host}}//traffic-violation-decision-model-service/process-traffic-violation HTTP/1.1
 content-type: {{contentType}}
 
 {
-    "Violation": {
-        "Date": "2025-07-26",
-        "Type": "speed",
-        "Speed Limit": 100,
-        "Actual Speed": 120
-    },
-    "Driver": {
-        "Name": "Walter White",
-        "Age": 55,
-        "State": "New Mexico",
-        "City": "Albuquerque",
-        "Points": 2
-    }
+  "violation": {
+    "date": "2022-03-10",
+    "type": "speed",
+    "speedLimit": 100,
+    "actualSpeed": 120
+  },
+  "driver": {
+    "name": "Walter White",
+    "age": 55,
+    "state": "Albuquerque",
+    "city": "New Mexico",
+    "points": 2
+  }
 }

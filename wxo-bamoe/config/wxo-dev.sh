@@ -23,3 +23,4 @@ orchestrate copilot start --env-file $1
 echo -e "\nWatson Orchestrate copilot server has been installed and started...";
 echo -e "--> In order to stop the Watson Orchestrate copilot server, use <orchestrate copilot stop>";
 echo -e "--> In order to uninstall the Watson Orchestrate copilot server, use <orchestrate server reset>";
+    

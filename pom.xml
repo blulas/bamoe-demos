@@ -7,15 +7,22 @@
   <packaging>pom</packaging>
 
   <modules>
-      <module>fact-model</module>
+      <module>shared-fact-model</module>
 
       <!-- Quarkus Demos -->
       <module>quarkus-classic-rules-service</module>
-      <module>quarkus-rules-service</module>
+      <module>quarkus-classic-decision-model-service</module>
+
       <module>quarkus-decision-model-service</module>
+
+      <!-- Quarkus Demos -->
+      <!--
+
+      <module>quarkus-rules-service</module>
       <module>quarkus-event-driven-rules-service</module>
       <module>quarkus-stateless-process-service</module>
       <module>quarkus-stateful-process-service</module>
+      -->
 
       <!-- Spring Boot Demos (under construction) -->
       <!--

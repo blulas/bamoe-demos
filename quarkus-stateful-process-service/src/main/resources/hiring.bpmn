@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<bpmn2:definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn2="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:bpsim="http://www.bpsim.org/schemas/1.0" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:drools="http://www.jboss.org/drools" id="_HxS_8HqVED63z-OAFwmKbw" xsi:schemaLocation="http://www.omg.org/spec/BPMN/20100524/MODEL BPMN20.xsd http://www.jboss.org/drools drools.xsd http://www.bpsim.org/schemas/1.0 bpsim.xsd http://www.omg.org/spec/DD/20100524/DC DC.xsd http://www.omg.org/spec/DD/20100524/DI DI.xsd " exporter="jBPM Process Modeler" exporterVersion="2.0" targetNamespace="http://www.omg.org/bpmn20">
+<bpmn2:definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn2="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:bpsim="http://www.bpsim.org/schemas/1.0" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:drools="http://www.jboss.org/drools" id="_Y83vcJvkED6_o4Cly5FN1A" xsi:schemaLocation="http://www.omg.org/spec/BPMN/20100524/MODEL BPMN20.xsd http://www.jboss.org/drools drools.xsd http://www.bpsim.org/schemas/1.0 bpsim.xsd http://www.omg.org/spec/DD/20100524/DC DC.xsd http://www.omg.org/spec/DD/20100524/DI DI.xsd " exporter="jBPM Process Modeler" exporterVersion="2.0" targetNamespace="http://www.omg.org/bpmn20">
   <bpmn2:itemDefinition id="_hr_approvalItem" structureRef="Boolean"/>
   <bpmn2:itemDefinition id="_it_approvalItem" structureRef="Boolean"/>
   <bpmn2:itemDefinition id="_candidateDataItem" structureRef="org.acme.CandidateData"/>
@@ -43,8 +43,8 @@
   <bpmn2:itemDefinition id="__F4D56F6C-4CFE-4D5C-BF5E-67261F68EF1A_decisionInputXItem" structureRef="java.lang.String"/>
   <bpmn2:itemDefinition id="__F4D56F6C-4CFE-4D5C-BF5E-67261F68EF1A_CandidateDataInputXItem" structureRef="org.acme.CandidateData"/>
   <bpmn2:itemDefinition id="__F4D56F6C-4CFE-4D5C-BF5E-67261F68EF1A_OfferOutputXItem" structureRef="org.acme.Offer"/>
-  <bpmn2:collaboration id="_5CD0D4B9-C606-4AED-B0C4-FAD6A2C9448E" name="Default Collaboration">
-    <bpmn2:participant id="_4BEA6ADA-F972-410E-A322-E65AE380F64B" name="Pool Participant" processRef="hiring"/>
+  <bpmn2:collaboration id="_8014E43D-E735-453A-838A-566854C9B52A" name="Default Collaboration">
+    <bpmn2:participant id="_E66A0AA6-59A3-49CC-8484-F479D8D2BFBF" name="Pool Participant" processRef="hiring"/>
   </bpmn2:collaboration>
   <bpmn2:process id="hiring" drools:packageName="org.acme" drools:version="1.0" drools:adHoc="false" name="hiring" isExecutable="true" processType="Public">
     <bpmn2:extensionElements>
@@ -79,10 +79,10 @@
         </drools:metaData>
       </bpmn2:extensionElements>
     </bpmn2:property>
+    <bpmn2:sequenceFlow id="_59F9A0E6-7F9C-43A9-8920-5B40A91169E6" sourceRef="_A51A809E-03C0-4EA7-91F1-7B3C5E29AD04" targetRef="_F4D56F6C-4CFE-4D5C-BF5E-67261F68EF1A"/>
     <bpmn2:sequenceFlow id="_C6E61C53-FD35-4347-B69E-30AA93AE4404" sourceRef="_A51A809E-03C0-4EA7-91F1-7B3C5E29AD04" targetRef="_30C8C01B-4149-4AE5-8D86-D27D57BCA8E7">
       <bpmn2:conditionExpression xsi:type="bpmn2:tFormalExpression" language="http://www.java.com/java"><![CDATA[return candidateData.getExperience() < 1 || candidateData.getSkills().size() == 0;]]></bpmn2:conditionExpression>
     </bpmn2:sequenceFlow>
-    <bpmn2:sequenceFlow id="_59F9A0E6-7F9C-43A9-8920-5B40A91169E6" sourceRef="_A51A809E-03C0-4EA7-91F1-7B3C5E29AD04" targetRef="_F4D56F6C-4CFE-4D5C-BF5E-67261F68EF1A"/>
     <bpmn2:sequenceFlow id="_B7FC63DD-C08F-4CB3-A51A-79C1B8B18E6E" sourceRef="_B9662806-84F3-4444-AD62-4790CDA7C85D" targetRef="_30C8C01B-4149-4AE5-8D86-D27D57BCA8E7"/>
     <bpmn2:sequenceFlow id="_7DDA574A-C220-4FEF-9784-22EF8052EDEC" sourceRef="_940F2A0C-8CC6-4ECA-B504-49363AF68B67" targetRef="_6CE52250-BCEE-485C-8AE4-F6CACF2EF5A1"/>
     <bpmn2:sequenceFlow id="_B11455DE-F77A-4251-A85B-4C66636E3CD9" sourceRef="_B9662806-84F3-4444-AD62-4790CDA7C85D" targetRef="_940F2A0C-8CC6-4ECA-B504-49363AF68B67">
@@ -178,8 +178,8 @@
     </bpmn2:exclusiveGateway>
     <bpmn2:exclusiveGateway id="_A51A809E-03C0-4EA7-91F1-7B3C5E29AD04" drools:dg="_59F9A0E6-7F9C-43A9-8920-5B40A91169E6" gatewayDirection="Diverging" default="_59F9A0E6-7F9C-43A9-8920-5B40A91169E6">
       <bpmn2:incoming>_5162ABF0-DD2E-4BDC-9A46-DDCFCB010287</bpmn2:incoming>
-      <bpmn2:outgoing>_59F9A0E6-7F9C-43A9-8920-5B40A91169E6</bpmn2:outgoing>
       <bpmn2:outgoing>_C6E61C53-FD35-4347-B69E-30AA93AE4404</bpmn2:outgoing>
+      <bpmn2:outgoing>_59F9A0E6-7F9C-43A9-8920-5B40A91169E6</bpmn2:outgoing>
     </bpmn2:exclusiveGateway>
     <bpmn2:exclusiveGateway id="_B9662806-84F3-4444-AD62-4790CDA7C85D" drools:dg="_B7FC63DD-C08F-4CB3-A51A-79C1B8B18E6E" gatewayDirection="Diverging" default="_B7FC63DD-C08F-4CB3-A51A-79C1B8B18E6E">
       <bpmn2:incoming>_C62F7EFB-A009-450A-81C7-57D36F0DF766</bpmn2:incoming>
@@ -314,8 +314,8 @@ kcontext.setVariable("it_approval", false);</bpmn2:script>
         <bpmn2:sourceRef>_8962C15F-55EC-46F7-B926-5D5A1FD8D35E_approveOutputX</bpmn2:sourceRef>
         <bpmn2:targetRef>it_approval</bpmn2:targetRef>
       </bpmn2:dataOutputAssociation>
-      <bpmn2:potentialOwner id="_HxX4cHqVED63z-OAFwmKbw">
-        <bpmn2:resourceAssignmentExpression id="_HxX4cXqVED63z-OAFwmKbw">
+      <bpmn2:potentialOwner id="_Y88A4JvkED6_o4Cly5FN1A">
+        <bpmn2:resourceAssignmentExpression id="_Y88A4ZvkED6_o4Cly5FN1A">
           <bpmn2:formalExpression>jdoe</bpmn2:formalExpression>
         </bpmn2:resourceAssignmentExpression>
       </bpmn2:potentialOwner>
@@ -382,8 +382,8 @@ kcontext.setVariable("it_approval", false);</bpmn2:script>
         <bpmn2:sourceRef>_B8C4F63C-81AD-4291-9C1B-84967277EEF6_offerOutputX</bpmn2:sourceRef>
         <bpmn2:targetRef>offer</bpmn2:targetRef>
       </bpmn2:dataOutputAssociation>
-      <bpmn2:potentialOwner id="_HxX4cnqVED63z-OAFwmKbw">
-        <bpmn2:resourceAssignmentExpression id="_HxX4c3qVED63z-OAFwmKbw">
+      <bpmn2:potentialOwner id="_Y88A4pvkED6_o4Cly5FN1A">
+        <bpmn2:resourceAssignmentExpression id="_Y88A45vkED6_o4Cly5FN1A">
           <bpmn2:formalExpression>jdoe</bpmn2:formalExpression>
         </bpmn2:resourceAssignmentExpression>
       </bpmn2:potentialOwner>
@@ -494,14 +494,14 @@ kcontext.setVariable("it_approval", false);</bpmn2:script>
         <di:waypoint x="1271.0833333333333" y="72.66666666666671"/>
         <di:waypoint x="1271.0833333333333" y="401.66666666666674"/>
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="edge_shape__A51A809E-03C0-4EA7-91F1-7B3C5E29AD04_to_shape__F4D56F6C-4CFE-4D5C-BF5E-67261F68EF1A" bpmnElement="_59F9A0E6-7F9C-43A9-8920-5B40A91169E6">
-        <di:waypoint x="450.0833333333333" y="44.66666666666672"/>
-        <di:waypoint x="515.3333333333333" y="44.66666666666672"/>
-      </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="edge_shape__A51A809E-03C0-4EA7-91F1-7B3C5E29AD04_to_shape__30C8C01B-4149-4AE5-8D86-D27D57BCA8E7" bpmnElement="_C6E61C53-FD35-4347-B69E-30AA93AE4404">
         <di:waypoint x="450.0833333333333" y="72.66666666666671"/>
         <di:waypoint x="450.0833333333333" y="401.66666666666674"/>
         <di:waypoint x="1271.0833333333333" y="401.66666666666674"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="edge_shape__A51A809E-03C0-4EA7-91F1-7B3C5E29AD04_to_shape__F4D56F6C-4CFE-4D5C-BF5E-67261F68EF1A" bpmnElement="_59F9A0E6-7F9C-43A9-8920-5B40A91169E6">
+        <di:waypoint x="450.0833333333333" y="44.66666666666672"/>
+        <di:waypoint x="515.3333333333333" y="44.66666666666672"/>
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
@@ -680,7 +680,7 @@ kcontext.setVariable("it_approval", false);</bpmn2:script>
         </bpsim:Scenario>
       </bpsim:BPSimData>
     </bpmn2:extensionElements>
-    <bpmn2:source>_HxS_8HqVED63z-OAFwmKbw</bpmn2:source>
-    <bpmn2:target>_HxS_8HqVED63z-OAFwmKbw</bpmn2:target>
+    <bpmn2:source>_Y83vcJvkED6_o4Cly5FN1A</bpmn2:source>
+    <bpmn2:target>_Y83vcJvkED6_o4Cly5FN1A</bpmn2:target>
   </bpmn2:relationship>
 </bpmn2:definitions>

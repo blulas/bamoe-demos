@@ -4,11 +4,11 @@
 
     <!-- POM -->
     <groupId>com.ibm.techsales.bamoe.demos</groupId>
-	<artifactId>fact-model</artifactId>
+	<artifactId>shared-fact-model</artifactId>
 	<version>1.0.0</version>
 	<packaging>jar</packaging>
-	<name>fact-model</name>
-	<description>Fact Model</description>
+	<name>shared-fact-model</name>
+	<description>BAMOE Demos: Shared Fact Model</description>
 
     <!-- Global Properties -->
 	<properties>

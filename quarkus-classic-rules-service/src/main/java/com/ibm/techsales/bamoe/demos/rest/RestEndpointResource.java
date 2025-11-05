@@ -14,19 +14,19 @@ import jakarta.ws.rs.core.MediaType;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 
+import com.ibm.techsales.bamoe.api.rules.RuleResults;
 import com.ibm.techsales.bamoe.demos.model.Customer;
-import com.ibm.techsales.bamoe.demos.model.rules.RuleResults;
-import com.ibm.techsales.bamoe.demos.service.ClassicRuleService;
+import com.ibm.techsales.bamoe.demos.service.CustomerRuleService;
 
-@Path("/classic-rules-service")
+@Path("/customer-rules-service")
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
 @ApplicationScoped
-public class ClassicRuleServiceResource {
+public class RestEndpointResource {
 
-    private static final Logger logger = LoggerFactory.getLogger(ClassicRuleServiceResource.class);
+    private static final Logger logger = LoggerFactory.getLogger(RestEndpointResource.class);
 
-    @Inject ClassicRuleService service;
+    @Inject CustomerRuleService ruleService;
 
     @POST()
 	@Path("process-customers")
@@ -34,7 +34,7 @@ public class ClassicRuleServiceResource {
     @Consumes(MediaType.APPLICATION_JSON)
     public Response processCustomers(List<Customer> customers) {
 
-        RuleResults results = service.processCustomers(customers);
+        RuleResults results = ruleService.processCustomers(customers);
         return Response.ok(results).build();
     }
 }

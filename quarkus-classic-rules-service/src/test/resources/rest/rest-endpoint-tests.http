@@ -4,14 +4,14 @@
 
 @local.host.url = http://localhost:8080
 @remote.host.url = https://quarkus-classic-rules-service-bamoe-demos.apps-crc.testing
-@host={{remote.host.url}}
+@host={{local.host.url}}
 @contentType = application/json
 
 ################################################
 # Process Customers
 ################################################
 
-POST {{host}}/classic-rules-service/process-customers HTTP/1.1
+POST {{host}}/customer-rules-service/process-customers HTTP/1.1
 content-type: {{contentType}}
 
 [
