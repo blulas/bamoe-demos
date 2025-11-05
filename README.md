@@ -19,6 +19,10 @@ The following shared projects are available, in support of both Quarkus and Spri
 - [**Sharable Fact Model**](./shared-fact-model) is a Maven library containing all shared Java classes, used by various demo projects.
 - [**Watson Orchestrate & BAMOE**](./wxo-bamoe) is a combined demo of IBM Watson Orchestrate and BAMOE working in conjunction with each other.
 
+### IBM Watson Orchestrate Demo Projets
+The following Watson Orchestrate projects are available:
+- [**Watson Orchestrate & BAMOE**](./wxo-bamoe) is a combined demo of IBM Watson Orchestrate and BAMOE working in conjunction with each other.
+
 ### Quarkus Demo Projects
 The following demos are based on the `IBM BAMOE Quarkus runtime`:
 

@@ -12,21 +12,16 @@
       <!-- Quarkus Demos -->
       <module>quarkus-classic-rules-service</module>
       <module>quarkus-classic-decision-model-service</module>
-
-      <module>quarkus-decision-model-service</module>
-
-      <!-- Quarkus Demos -->
-      <!--
-
       <module>quarkus-rules-service</module>
+      <module>quarkus-decision-model-service</module>
       <module>quarkus-event-driven-rules-service</module>
       <module>quarkus-stateless-process-service</module>
       <module>quarkus-stateful-process-service</module>
-      -->
 
       <!-- Spring Boot Demos (under construction) -->
       <!--
       <module>springboot-classic-rules-service</module>
+      <module>springboot-classic-decision-model-service</module>
       <module>springboot-rules-service</module>
       <module>springboot-decision-model-service</module>
       <module>springboot-event-driven-rules-service</module>

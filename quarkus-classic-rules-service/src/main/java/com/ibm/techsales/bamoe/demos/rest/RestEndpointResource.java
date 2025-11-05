@@ -14,7 +14,7 @@ import jakarta.ws.rs.core.MediaType;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 
-import com.ibm.techsales.bamoe.api.rules.RuleResults;
+import com.ibm.techsales.bamoe.api.model.RuleResults;
 import com.ibm.techsales.bamoe.demos.model.Customer;
 import com.ibm.techsales.bamoe.demos.service.CustomerRuleService;
 

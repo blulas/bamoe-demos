@@ -10,7 +10,7 @@ import org.slf4j.LoggerFactory;
 import jakarta.enterprise.context.ApplicationScoped;
 
 import com.ibm.techsales.bamoe.api.rules.ClassicRuleService;
-import com.ibm.techsales.bamoe.api.rules.RuleResults;
+import com.ibm.techsales.bamoe.api.model.RuleResults;
 import com.ibm.techsales.bamoe.demos.model.Customer;
 
 @ApplicationScoped
