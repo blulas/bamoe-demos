@@ -1,7 +1,7 @@
-# IBM Business Automation Manager Open Editions (IBM BAMOE) Demos
+# IBM Business Automation Manager Open Editions Demos
 
 # Overview
-This repository includes a set of BAMOE demos, fully deployable and testable on Red Hat OpenShift or Kubernetes.
+This repository includes a set of IBM BAMOE demos.
 
 ## Repository Modules
 This is a multi-module repository, with the following modules:
@@ -10,45 +10,22 @@ This is a multi-module repository, with the following modules:
 The following public BAMOE assets are used for these demos:
 
 - [**BAMOE Setup**](https://github.com/bamoe/bamoe-setup) contains setup instructions as well as jump-start scripts useful in setting up BAMOE on your local machine.
-- [**BAMOE Maven**](https://github.com/bamoe/bamoe-maven) is a set of custom Maven Acclerators or Archetypes for creating projects for IBM Business Automation Manager Open Editions (BAMOE).
-- [**BAMOE Business Service API**](https://github.com/bamoe/bamoe-business-service-api) is a set of Java API's for implementing BAMOE Classic or Embedded Mode business services
+- [**BAMOE Maven**](https://github.com/bamoe/bamoe-maven) is a set of custom Maven Acclerators or Archetypes for creating projects for IBM Business Automation Manager Open Editions.
+- [**BAMOE Engine Adaptors**](https://github.com/bamoe/bamoe-engine-adaptors) is a set of Java API's for IBM Business Automation Manager Open Editions embedded mode.
 
-### Sharable Demo Projets
-The following shared projects are available, in support of both Quarkus and Spring Boot demos:
+### Demo Projets
+The following projects are available, in support of the `Embedded`, `Quarkus`, `Spring Boot`, and `Watson` demos:
 
-- [**Sharable Fact Model**](./shared-fact-model) is a Maven library containing all shared Java classes, used by various demo projects.
-- [**Watson Orchestrate & BAMOE**](./wxo-bamoe) is a combined demo of IBM Watson Orchestrate and BAMOE working in conjunction with each other.
-
-### IBM Watson Orchestrate Demo Projets
-The following Watson Orchestrate projects are available:
-- [**Watson Orchestrate & BAMOE**](./wxo-bamoe) is a combined demo of IBM Watson Orchestrate and BAMOE working in conjunction with each other.
-
-### Quarkus Demo Projects
-The following demos are based on the `IBM BAMOE Quarkus runtime`:
-
-- [**Quarkus Classic Rules Service**](./quarkus-classic-rules-service) is an example of a classic-mode rules service, based on the Quarkus runtime.
-- [**Quarkus Classic Decision Model Service**](./quarkus-classic-decision-model-service) is an example of a classic-mode decision (DMN) service, based on the Quarkus runtime.
-- [**Quarkus Rules Service**](./quarkus-rules-service) is an example of a Kogito rules service, based on the Quarkus runtime.
-- [**Quarkus Decision Model Service**](./quarkus-decision-model-service) is an example of a Kogito decision model (DMN) service, based on the Quarkus runtime.
-- [**Quarkus Event Driven Rules Service**](./quarkus-event-driven-rules-service) is an example of a Kafka event-driven Kogito rules service, based on the Quarkus runtime.
-- [**Quarkus Stateless (STP) Service**](./quarkus-stp-service) is an example of a Kogito stateless process service that utilizes straight-through-processing (STP) of external services, based on the Quarkus runtime.
-- [**Quarkus Stateful Process Service**](./quarkus-process-service) is an example of a Kogito stateful process service that utilizes process engine persistence, using stateful BPMN, based on the Quarkus runtime.
-
-### Spring Boot Demo Projects _(under construction)_
-The following demos are based on the `IBM BAMOE Spring Boot runtime`:
-
-- [**Spring Boot Classic Rules Service**](./springboot-classic-rules-service) is an example of a classic-mode rules service, based on the Spring Boot runtime.
-- [**Spring Boot Classic Decision Model Service**](./springboot-classic-decision-model-service) is an example of a classic-mode decision (DMN) service, based on the Spring Boot runtime.
-- [**Spring Boot Rules Service**](./springboot-rules-service) is an example of a Kogito rules service, based on the Spring Boot runtime.
-- [**Spring Boot Decision Model Service**](./springboot-decision-model-service) is an example of a Kogito decision model (DMN) service, based on the Spring Boot runtime.
-- [**Spring Boot Event Driven Rules Service**](./springboot-event-driven-rules-service) is an example of a Kafka event-driven Kogito rules service, based on the Spring Boot runtime.
-- [**Spring Boot Stateless (STP) Service**](./springboot-stp-service) is an example of a Kogito stateless process service that utilizes straight-through-processing (STP) of external services, based on the Spring Boot runtime.
-- [**Spring Boot Stateful Process Service**](./springboot-process-service) is an example of a Kogito stateful process service that utilizes process engine persistence, using stateful BPMN, based on the Spring Boot runtime.
+- [**Sharable Fact Model**](./common/fact-model) is a Maven library containing all shared Java classes, used by various demo projects.
+- [**Embedded Engine Demos**](./embedded/README.md) is a set of embedded engine demonstration projects.
+- [**Quarkus Business Service Demos**](./quarkus/README.md) is a set of Quarkus-based business service demonstration projects.
+- [**Spring Boot Business Service Demos**](./spring-boot/README.md) is a set of Spring Boot-based business service demonstration projects.
+- [**IBM Watson Orchestrate & BAMOE**](./watson/README.md) is a set IBM Watson Orchestrate and BAMOE demonstration projects.
 
 ## Architecture
 The following diagram represents the typical, containerized architecture, for IBM BAMOE.  You will notice from the diagram below, there are only minimal infrastructure services required for decision-based applications.  You can choose to deploy `Maven` either a a container image or into your local `Artifactory` server as an off-line repository, or both.  If you wish to provide visual modeling capabilities to your developers or users, you can choose to deploy `BAMOE Canvas`.  No database or consoles are needed for decisions, however you can configure `Kafka` if your use cases include event-based decisioning.  Process-based applications require a database for process instance persistence, and you can deploy the DB and it's associated services as a container.  In addition, you can make the `BAMOE Management Console` available to your users as a container.  
 
-![BAMOE Architecture](./doc/images/architecture-process.png)
+![BAMOE Architecture](./doc/images/bamoe-architecture.png)
 
 ## Additional Information (*Appendicies*)
 This repository is focused on business automation using [**IBM Business Automation Manager Open Editions**](https://www.ibm.com/docs/en/ibamoe/9.3.x) products, specifically the IBM build of [**Kogito**](https://kogito.kie.org/) known as **IBM Decision Manager Open Edition (DMOE)** and **IBM Process Automation Manager Open Edition (PAMOE)**, leveraging [**Quarkus**](https://quarkus.io/) or [**Spring Boot**](https://spring.io/) as the assoicated container runtime.  The following online documentation is available in order to learn various aspects of these products and frameworks:

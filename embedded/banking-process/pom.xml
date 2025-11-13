@@ -1,0 +1,198 @@
+<?xml version="1.0"?>
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <modelVersion>4.0.0</modelVersion>
+
+	<!-- POM -->
+  	<groupId>com.ibm.techsales.bamoe.demos.embedded</groupId>
+	<artifactId>banking-process</artifactId>
+	<version>1.0.0</version>
+	<packaging>jar</packaging>
+	<name>banking-process</name>
+	<description>BAMOE Demo: Banking Stateless Process</description>
+
+    <!-- Global Properties -->
+	<properties>
+		<!-- General Properties -->
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+
+		<!-- Java Properties -->
+		<java.version>21</java.version>
+		<jakarta-api.version>10.0.0</jakarta-api.version>
+		<jandex-maven-plugin.version>1.2.1</jandex-maven-plugin.version>
+
+		<!-- Common Maven Plugins -->
+		<maven.compiler.source>${java.version}</maven.compiler.source>
+		<maven.compiler.target>${java.version}</maven.compiler.target>
+        <maven.compiler.parameters>true</maven.compiler.parameters>
+		<maven.compiler.plugin.version>3.10.1</maven.compiler.plugin.version>
+        <maven.resources.plugin.version>3.2.0</maven.resources.plugin.version>
+		<maven.surefire.plugin.version>3.0.0-M7</maven.surefire.plugin.version>
+
+		<!-- BAMOE -->
+		<bamoe.version>9.3.0-ibm-0007</bamoe.version>
+
+		<!-- Testing Properties -->
+      	<skipTests>true</skipTests>
+
+		<!-- BAMOE Embedded Engine Adaptors -->
+      	<bamoe-engine-adaptors.groupId>com.ibm.bamoe.engine.adaptors</bamoe-engine-adaptors.groupId>
+      	<bamoe-engine-adaptors.artifactId>bamoe-engine-adaptors</bamoe-engine-adaptors.artifactId>
+      	<bamoe-engine-adaptors.version>1.0.0</bamoe-engine-adaptors.version>
+
+		<!-- Shared Fact Model -->
+      	<fact.model.groupId>com.ibm.techsales.bamoe.demos.common</fact.model.groupId>
+      	<fact.model.artifactId>fact-model</fact.model.artifactId>
+      	<fact.model.version>1.0.0</fact.model.version>
+
+		<!-- Banking Deposit Rules -->
+      	<banking-deposit-rules.groupId>com.ibm.techsales.bamoe.demos.embedded</banking-deposit-rules.groupId>
+      	<banking-deposit-rules.artifactId>banking-deposit-rules</banking-deposit-rules.artifactId>
+      	<banking-deposit-rules.version>1.0.0</banking-deposit-rules.version>
+
+		<!-- Traffic Violation Decision Model  -->
+      	<traffic-violation-decision-model.groupId>com.ibm.techsales.bamoe.demos.embedded</traffic-violation-decision-model.groupId>
+      	<traffic-violation-decision-model.artifactId>traffic-violation-decision-model</traffic-violation-decision-model.artifactId>
+      	<traffic-violation-decision-model.version>1.0.0</traffic-violation-decision-model.version>
+	</properties>
+
+	<!-- Dependency Management -->
+	<dependencyManagement>
+		<dependencies>
+			<!-- BAMOE -->
+			<dependency>
+				<groupId>com.ibm.bamoe</groupId>
+				<artifactId>bamoe-bom</artifactId>
+				<version>${bamoe.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+
+	<dependencies>
+		<!-- BAMOE Embedded Engine Adaptors -->
+		<dependency>
+			<groupId>${bamoe-engine-adaptors.groupId}</groupId>
+			<artifactId>${bamoe-engine-adaptors.artifactId}</artifactId>
+			<version>${bamoe-engine-adaptors.version}</version>
+		</dependency>
+
+		<!-- Sharable Fact Model -->
+		<dependency>
+			<groupId>${fact.model.groupId}</groupId>
+			<artifactId>${fact.model.artifactId}</artifactId>
+			<version>${fact.model.version}</version>
+		</dependency>
+
+		<!-- Embedded Banking Deposit Rules -->
+		<dependency>
+			<groupId>${banking-deposit-rules.groupId}</groupId>
+			<artifactId>${banking-deposit-rules.artifactId}</artifactId>
+			<version>${banking-deposit-rules.version}</version>
+		</dependency>
+
+		<!-- Embedded Traffic Violation Decision Model -->
+		<dependency>
+			<groupId>${traffic-violation-decision-model.groupId}</groupId>
+			<artifactId>${traffic-violation-decision-model.artifactId}</artifactId>
+			<version>${traffic-violation-decision-model.version}</version>
+		</dependency>
+
+		<!-- Application Properties -->
+		<dependency>
+			<groupId>jakarta.platform</groupId>
+			<artifactId>jakarta.jakartaee-api</artifactId>
+			<version>${jakarta-api.version}</version>
+		</dependency>
+
+		<!-- Classic Engine Support -->
+		<dependency>
+      		<groupId>org.drools</groupId>
+      		<artifactId>drools-compiler</artifactId>
+    	</dependency>
+    
+		<dependency>
+      		<groupId>org.drools</groupId>
+      		<artifactId>drools-model-compiler</artifactId>
+    	</dependency>
+    
+		<dependency>
+      		<groupId>org.drools</groupId>
+      		<artifactId>drools-core</artifactId>
+      		<exclusions>
+				<exclusion>
+					<groupId>org.drools</groupId>
+					<artifactId>drools-wiring-static</artifactId>
+				</exclusion>
+			</exclusions>
+    	</dependency>
+    
+		<dependency>
+			<groupId>org.drools</groupId>
+			<artifactId>drools-wiring-dynamic</artifactId>
+    	</dependency>
+
+		<dependency>
+			<groupId>org.drools</groupId>
+			<artifactId>drools-mvel</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.drools</groupId>
+			<artifactId>drools-xml-support</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.drools</groupId>
+			<artifactId>drools-decisiontables</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.kie</groupId>
+			<artifactId>kie-api</artifactId>
+		</dependency>
+
+		<!-- Stateless Workflow -->
+		<dependency>
+			<groupId>org.kie.kogito</groupId>
+			<artifactId>jbpm-bpmn2</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.kie.kogito</groupId>
+			<artifactId>jbpm-xsd-resources</artifactId>
+		</dependency>
+	</dependencies>
+
+	<!-- Build Profile -->
+	<build>
+		<defaultGoal>install</defaultGoal>
+		<finalName>${project.artifactId}</finalName>
+		<plugins>
+			<plugin>
+				<groupId>org.kie</groupId>
+				<artifactId>kie-maven-plugin</artifactId>
+				<version>${bamoe.version}</version>
+				<extensions>true</extensions>
+				<configuration>
+					<validateDMN>disable</validateDMN>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>org.jboss.jandex</groupId>
+				<artifactId>jandex-maven-plugin</artifactId>
+				<version>${jandex-maven-plugin.version}</version>
+				<executions>
+					<execution>
+						<id>make-index</id>
+						<goals>
+							<goal>jandex</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+</project>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kmodule xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.drools.org/xsd/kmodule">
+    <kbase name="banking-process" default="true" packages="*"> 
+      <ksession name="banking-process-stateful"  type="stateful"  default="false"/> 
+      <ksession name="banking-process-stateless" type="stateless" default="true" /> 
+    </kbase> 
+</kmodule>
