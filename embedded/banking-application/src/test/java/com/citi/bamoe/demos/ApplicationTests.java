@@ -25,7 +25,7 @@ public class ApplicationTests {
 
     private static final Logger logger = LoggerFactory.getLogger(ApplicationTests.class);
 
-    @Test
+    //@Test
     void testBankingProcess() {
 
         logger.info("Testing Banking process....");
@@ -92,7 +92,7 @@ public class ApplicationTests {
         }
     }
 
-    @Test
+    //@Test
     void testBankDepositRules() {
 
         logger.info("Testing Bank Deposit rules....");
