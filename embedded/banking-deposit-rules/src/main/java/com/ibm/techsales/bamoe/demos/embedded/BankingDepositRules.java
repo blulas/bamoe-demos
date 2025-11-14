@@ -1,6 +1,7 @@
 package com.ibm.techsales.bamoe.demos.embedded;
 
 import java.util.List;
+import java.util.ArrayList;
 import java.util.Map;
 import java.util.HashMap;
 
@@ -12,7 +13,8 @@ import org.slf4j.LoggerFactory;
 import com.ibm.bamoe.engine.adaptors.RuleEngineAdaptor;
 import com.ibm.bamoe.engine.adaptors.model.RuleResults;
 
-import com.ibm.techsales.bamoe.demos.model.Customer;
+import com.ibm.techsales.bamoe.demos.model.Deposit;
+import com.ibm.techsales.bamoe.demos.model.AllAmounts;
 
 @ApplicationScoped
 public class BankingDepositRules extends RuleEngineAdaptor {
@@ -20,12 +22,14 @@ public class BankingDepositRules extends RuleEngineAdaptor {
     private static final Logger logger = LoggerFactory.getLogger(BankingDepositRules.class);
     private static final String RULESET_NAME = "banking-deposit-rules";
 
-    public RuleResults processCustomers(List<Customer> customers) throws Exception {
+    public RuleResults processDeposits(Integer maxAmount, List<Deposit> deposits) throws Exception {
 
-        // Convert the list of customers to a map
+        // Add the facts 
         Map<String, Object> facts = new HashMap<String, Object>();
-        for (Customer customer : customers) {
-            facts.put(customer.getId(), customer);
+        facts.put("maxAmount", maxAmount);
+
+        for (Deposit deposit : deposits) {
+            facts.put(deposit.getId(), deposit);
         }
 
         // Execute and return the results

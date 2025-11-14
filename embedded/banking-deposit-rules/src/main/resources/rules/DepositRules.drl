@@ -1,0 +1,33 @@
+package rules;
+
+import com.ibm.techsales.bamoe.demos.model.Deposit;
+
+rule SmallDepositApprove when
+    $d: Deposit( customer.age >= 20, deposit < 1000, amount <= 2000 )
+then
+    modify($d) { setApproved(true) };
+end
+
+rule SmallDepositReject when
+    $d: Deposit( customer.age >= 20, deposit < 1000, amount > 2000 )
+then
+    modify($d) { setApproved(false) };
+end
+
+rule LargeDepositApprove when
+    $d: Deposit( customer.age >= 20, deposit >= 1000, amount <= maxAmount )
+then
+    modify($d) { setApproved(true) };
+end
+
+rule LargeDepositReject when
+    $d: Deposit( customer.age >= 20, deposit >= 1000, amount > maxAmount )
+then
+    modify($d) { setApproved(false) };
+end
+
+rule NotAdultApplication when
+    $d: Deposit( customer.age < 20 )
+then
+    modify($d) { setApproved(false) };
+end

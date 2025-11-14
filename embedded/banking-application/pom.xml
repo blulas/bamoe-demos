@@ -46,6 +46,11 @@
       	<fact.model.artifactId>fact-model</fact.model.artifactId>
       	<fact.model.version>1.0.0</fact.model.version>
 
+		<!-- Customer Rules -->
+      	<customer-rules.groupId>com.ibm.techsales.bamoe.demos.embedded</customer-rules.groupId>
+      	<customer-rules.artifactId>customer-rules</customer-rules.artifactId>
+      	<customer-rules.version>1.0.0</customer-rules.version>
+
 		<!-- Banking Deposit Rules -->
       	<banking-deposit-rules.groupId>com.ibm.techsales.bamoe.demos.embedded</banking-deposit-rules.groupId>
       	<banking-deposit-rules.artifactId>banking-deposit-rules</banking-deposit-rules.artifactId>
@@ -68,6 +73,13 @@
 			<groupId>${fact.model.groupId}</groupId>
 			<artifactId>${fact.model.artifactId}</artifactId>
 			<version>${fact.model.version}</version>
+		</dependency>
+
+		<!-- Embedded Customer Rules -->
+		<dependency>
+			<groupId>${customer-rules.groupId}</groupId>
+			<artifactId>${customer-rules.artifactId}</artifactId>
+			<version>${customer-rules.version}</version>
 		</dependency>
 
 		<!-- Embedded Banking Deposit Rules -->

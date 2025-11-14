@@ -8,6 +8,7 @@
 
   <modules>
       <module>traffic-violation-decision-model</module>
+      <module>customer-rules</module>
       <module>banking-deposit-rules</module>
       <module>banking-process</module>
       <module>banking-application</module>

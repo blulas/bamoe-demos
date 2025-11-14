@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kmodule xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.drools.org/xsd/kmodule">
+    <kbase name="customer-rules" default="true" packages="*"> 
+      <ksession name="customer-rules-stateful"  type="stateful"  default="false"/> 
+      <ksession name="customer-rules-stateless" type="stateless" default="true" /> 
+    </kbase> 
+</kmodule>
