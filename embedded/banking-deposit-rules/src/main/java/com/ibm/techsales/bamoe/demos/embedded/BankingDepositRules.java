@@ -14,7 +14,6 @@ import com.ibm.bamoe.engine.adaptors.RuleEngineAdaptor;
 import com.ibm.bamoe.engine.adaptors.model.RuleResults;
 
 import com.ibm.techsales.bamoe.demos.model.Deposit;
-import com.ibm.techsales.bamoe.demos.model.AllAmounts;
 
 @ApplicationScoped
 public class BankingDepositRules extends RuleEngineAdaptor {
