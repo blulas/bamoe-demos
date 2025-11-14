@@ -30,6 +30,8 @@ The following projects are available, in support of the `Embedded`, `Quarkus`, `
 ![BAMOE Embedded Engine Architecture](./doc/images/application-architecture.png)
 
 ## BAMOE Business Service Architecture
+
+
 The following diagram represents the typical, containerized architecture, for IBM BAMOE.  You will notice from the diagram below, there are only minimal infrastructure services required for decision-based applications.  You can choose to deploy `Maven` either a a container image or into your local `Artifactory` server as an off-line repository, or both.  If you wish to provide visual modeling capabilities to your developers or users, you can choose to deploy `BAMOE Canvas`.  No database or consoles are needed for decisions, however you can configure `Kafka` if your use cases include event-based decisioning.  Process-based applications require a database for process instance persistence, and you can deploy the DB and it's associated services as a container.  In addition, you can make the `BAMOE Management Console` available to your users as a container.  
 
 ![BAMOE Architecture](./doc/images/bamoe-architecture.png)
