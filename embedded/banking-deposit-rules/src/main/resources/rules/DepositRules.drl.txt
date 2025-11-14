@@ -1,4 +1,4 @@
-package com.ibm.techsales.bamoe.demos.embedded.rules;
+package rules;
 
 unit BankingDepositUnit;
 

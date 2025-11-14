@@ -92,7 +92,7 @@ public class ApplicationTests {
         }
     }
 
-    //@Test
+    @Test
     void testBankDepositRules() {
 
         logger.info("Testing Bank Deposit rules....");
@@ -147,7 +147,7 @@ public class ApplicationTests {
         }
     }
 
-    @Test
+    //@Test
     void testTrafficViolationDecisionModel() {
 
         logger.info("Testing Traffic Violation decision model....");
