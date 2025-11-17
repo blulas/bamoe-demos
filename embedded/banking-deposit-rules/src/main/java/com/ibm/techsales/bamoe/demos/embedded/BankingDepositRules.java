@@ -21,6 +21,13 @@ public class BankingDepositRules extends RuleEngineAdaptor {
     private static final Logger logger = LoggerFactory.getLogger(BankingDepositRules.class);
     private static final String RULESET_NAME = "banking-deposit-rules";
 
+    public RuleResults processDeposit(Integer maxAmount, Deposit deposit) throws Exception {
+        
+        List<Deposit> deposits = new ArrayList<Deposit>();
+        deposits.add(deposit);
+        return processDeposits(maxAmount, deposits);
+    }
+
     public RuleResults processDeposits(Integer maxAmount, List<Deposit> deposits) throws Exception {
 
         // Add the facts 

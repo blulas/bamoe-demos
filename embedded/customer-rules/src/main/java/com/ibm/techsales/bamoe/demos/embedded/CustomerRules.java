@@ -1,6 +1,7 @@
 package com.ibm.techsales.bamoe.demos.embedded;
 
 import java.util.List;
+import java.util.ArrayList;
 import java.util.Map;
 import java.util.HashMap;
 
@@ -19,6 +20,13 @@ public class CustomerRules extends RuleEngineAdaptor {
 
     private static final Logger logger = LoggerFactory.getLogger(CustomerRules.class);
     private static final String RULESET_NAME = "customer-rules";
+
+    public RuleResults processCustomer(Integer maxAmount, Customer customer) throws Exception {
+        
+        List<Customer> customers = new ArrayList<Customer>();
+        customers.add(customer);
+        return processCustomers(customers);
+    }
 
     public RuleResults processCustomers(List<Customer> customers) throws Exception {
 
