@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <!-- POM -->
-    <groupId>com.ibm.techsales.bamoe.demos.common</groupId>
+    <groupId>com.ibm.bamoe.demos.common</groupId>
 	<artifactId>fact-model</artifactId>
 	<version>1.0.0</version>
 	<packaging>jar</packaging>

@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
 
 	<!-- POM -->
-  	<groupId>com.ibm.techsales.bamoe.demos.embedded</groupId>
+  	<groupId>com.ibm.bamoe.demos.embedded</groupId>
 	<artifactId>banking-process</artifactId>
 	<version>1.0.0</version>
 	<packaging>jar</packaging>
@@ -41,17 +41,17 @@
       	<bamoe-engine-adaptors.version>1.0.0</bamoe-engine-adaptors.version>
 
 		<!-- Shared Fact Model -->
-      	<fact.model.groupId>com.ibm.techsales.bamoe.demos.common</fact.model.groupId>
+      	<fact.model.groupId>com.ibm.bamoe.demos.common</fact.model.groupId>
       	<fact.model.artifactId>fact-model</fact.model.artifactId>
       	<fact.model.version>1.0.0</fact.model.version>
 
 		<!-- Banking Deposit Rules -->
-      	<banking-deposit-rules.groupId>com.ibm.techsales.bamoe.demos.embedded</banking-deposit-rules.groupId>
+      	<banking-deposit-rules.groupId>com.ibm.bamoe.demos.embedded</banking-deposit-rules.groupId>
       	<banking-deposit-rules.artifactId>banking-deposit-rules</banking-deposit-rules.artifactId>
       	<banking-deposit-rules.version>1.0.0</banking-deposit-rules.version>
 
 		<!-- Traffic Violation Decision Model  -->
-      	<traffic-violation-decision-model.groupId>com.ibm.techsales.bamoe.demos.embedded</traffic-violation-decision-model.groupId>
+      	<traffic-violation-decision-model.groupId>com.ibm.bamoe.demos.embedded</traffic-violation-decision-model.groupId>
       	<traffic-violation-decision-model.artifactId>traffic-violation-decision-model</traffic-violation-decision-model.artifactId>
       	<traffic-violation-decision-model.version>1.0.0</traffic-violation-decision-model.version>
 	</properties>

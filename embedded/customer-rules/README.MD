@@ -1,5 +1,5 @@
 # IBM Business Automation Manager Open Editions Demos - Customer Processing Rules
-This module contains an example ruleset which can be embedded into a Java application.
+This module contains an example ruleset which can be embedded into a Java application and utilizes legacy DRL features such as DSL's and rule templates.
 
 ## How To Build 
 Once you have configured your local development environment, you need to perform a Maven `build` of the repository.  This repository is built using `mvn clean install` by either the CI/CD pipeline or on a local developer workstation.  If deploying artifacts to an enterprise Maven repository, please use `mvn clean deploy`, which requires configuration of the `distributionManagement` section of your project's parent pom.xml.  

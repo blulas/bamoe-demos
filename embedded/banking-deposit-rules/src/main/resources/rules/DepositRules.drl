@@ -1,33 +1,52 @@
 package rules;
 
-import com.ibm.techsales.bamoe.demos.model.Deposit;
+import com.ibm.bamoe.demos.model.Deposit;
+import com.ibm.bamoe.demos.model.DepositType;
 
-rule SmallDepositApprove when
-    $d: Deposit( customer.age >= 20, deposit < 1000, amount <= 2000 )
+rule "Small Personal Check Deposit" when
+    $d: Deposit( type == DepositType.PersonalCheck, amount <= 500 )
 then
-    modify($d) { setApproved(true) };
+    modify($d) { setNumberOfDaysOnHold(3), setAmountAvailable(0), setAmountOnHold($d.getAmount()) };
 end
 
-rule SmallDepositReject when
-    $d: Deposit( customer.age >= 20, deposit < 1000, amount > 2000 )
+rule "Large Personal Check Deposit" when
+    $d: Deposit( type == DepositType.PersonalCheck, amount > 500 )
 then
-    modify($d) { setApproved(false) };
+    modify($d) { setNumberOfDaysOnHold(5), setAmountAvailable(0), setAmountOnHold($d.getAmount()) };
 end
 
-rule LargeDepositApprove when
-    $d: Deposit( customer.age >= 20, deposit >= 1000, amount <= maxAmount )
+rule "Cash Deposit" when
+    $d: Deposit( type == DepositType.Cash )
 then
-    modify($d) { setApproved(true) };
+    modify($d) { setAmountAvailable($d.getAmount()), setAmountOnHold(0) };
 end
 
-rule LargeDepositReject when
-    $d: Deposit( customer.age >= 20, deposit >= 1000, amount > maxAmount )
+rule "Payroll Check Deposit" when
+    $d: Deposit( type == DepositType.PayrollCheck )
 then
-    modify($d) { setApproved(false) };
+    modify($d) { setAmountAvailable($d.getAmount()), setAmountOnHold(0) };
 end
 
-rule NotAdultApplication when
-    $d: Deposit( customer.age < 20 )
+rule "Wire Transfer Deposit" when
+    $d: Deposit( type == DepositType.WireTransfer )
 then
-    modify($d) { setApproved(false) };
+    modify($d) {setNumberOfDaysOnHold(1) };
+end
+
+rule "No Hold Deposit" when
+    $d: Deposit( type != DepositType.PersonalCheck, type != DepositType.WireTransfer )
+then
+    modify($d) { setNumberOfDaysOnHold(0) };
+end
+
+rule "Deposit Below Max Availability Amount" when
+    $d: Deposit( amount <= maxAvailabilityAmount, type != DepositType.PersonalCheck, type != DepositType.Cash, type != DepositType.PayrollCheck )
+then
+    modify($d) { setAmountAvailable($d.getAmount()), setAmountOnHold(0) };
+end
+
+rule "Deposit Over Max Availability Amount" when
+    $d: Deposit( amount > maxAvailabilityAmount, type != DepositType.PersonalCheck, type != DepositType.Cash, type != DepositType.PayrollCheck )
+then
+    modify($d) { setAmountAvailable($d.getMaxAvailabilityAmount()), setAmountOnHold($d.getAmount() - $d.getMaxAvailabilityAmount()) };
 end

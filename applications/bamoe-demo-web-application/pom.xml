@@ -1,0 +1,140 @@
+<?xml version="1.0"?>
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <modelVersion>4.0.0</modelVersion>
+
+    <!-- POM -->
+  	<groupId>com.ibm.bamoe.demos.applications</groupId>
+	<artifactId>bamoe-demo-web-application</artifactId>
+	<version>1.0.0</version>
+	<packaging>war</packaging>
+	<name>bamoe-demo-web-application</name>
+	<description>BAMOE Demo: Command Line Interface (CLI) Application</description>
+
+    <!-- Global Properties -->
+	<properties>
+		<!-- General Properties -->
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+	
+		<!-- Maven Properties -->
+		<maven-compiler-plugin.version>3.10.1</maven-compiler-plugin.version>
+		<maven-war-plugin.version>3.3.2</maven-war-plugin.version>
+
+		<!-- Java Properties -->
+		<java.version>21</java.version>
+		<jandex-maven-plugin.version>1.2.1</jandex-maven-plugin.version>
+
+		<!-- Java Servlet Properties -->
+		<java-servlet.version>4.0.1</java-servlet.version>
+
+		<!-- Logging Properties -->
+		<slf4j.version>2.0.17</slf4j.version>
+		<logback-classic.version>1.5.20</logback-classic.version>
+
+		<!-- Testing Properties -->
+		<junit.version>3.8.1</junit.version>
+      	<skipTests>true</skipTests>
+
+		<!-- Shared Fact Model -->
+      	<fact.model.groupId>com.ibm.bamoe.demos.common</fact.model.groupId>
+      	<fact.model.artifactId>fact-model</fact.model.artifactId>
+      	<fact.model.version>1.0.0</fact.model.version>
+
+		<!-- Banking Deposit Rules -->
+      	<banking-deposit-rules.groupId>com.ibm.bamoe.demos.embedded</banking-deposit-rules.groupId>
+      	<banking-deposit-rules.artifactId>banking-deposit-rules</banking-deposit-rules.artifactId>
+      	<banking-deposit-rules.version>1.0.0</banking-deposit-rules.version>
+
+		<!-- Traffic Violation Decision Model  -->
+      	<traffic-violation-decision-model.groupId>com.ibm.bamoe.demos.embedded</traffic-violation-decision-model.groupId>
+      	<traffic-violation-decision-model.artifactId>traffic-violation-decision-model</traffic-violation-decision-model.artifactId>
+      	<traffic-violation-decision-model.version>1.0.0</traffic-violation-decision-model.version>
+
+		<!-- Banking Process  -->
+      	<banking-process.groupId>com.ibm.bamoe.demos.embedded</banking-process.groupId>
+      	<banking-process.artifactId>banking-process</banking-process.artifactId>
+      	<banking-process.version>1.0.0</banking-process.version>
+	</properties>
+
+	<!-- Depenencies -->
+	<dependencies>
+		<!-- Sharable Fact Model -->
+		<dependency>
+			<groupId>${fact.model.groupId}</groupId>
+			<artifactId>${fact.model.artifactId}</artifactId>
+			<version>${fact.model.version}</version>
+		</dependency>
+
+		<!-- Embedded Banking Deposit Rules -->
+		<dependency>
+			<groupId>${banking-deposit-rules.groupId}</groupId>
+			<artifactId>${banking-deposit-rules.artifactId}</artifactId>
+			<version>${banking-deposit-rules.version}</version>
+		</dependency>
+
+		<!-- Embedded Traffic Violation Decision Model -->
+		<dependency>
+			<groupId>${traffic-violation-decision-model.groupId}</groupId>
+			<artifactId>${traffic-violation-decision-model.artifactId}</artifactId>
+			<version>${traffic-violation-decision-model.version}</version>
+		</dependency>
+
+		<!-- Embedded Banking Process -->
+		<dependency>
+			<groupId>${banking-process.groupId}</groupId>
+			<artifactId>${banking-process.artifactId}</artifactId>
+			<version>${banking-process.version}</version>
+		</dependency>
+
+		<!-- Jakarta Servlets -->
+		<dependency>
+			<groupId>jakarta.servlet</groupId>
+			<artifactId>jakarta.servlet-api</artifactId>
+			<version>6.2.0-M1</version>
+			<scope>provided</scope>
+		</dependency>
+
+		<!-- Logging -->
+		<dependency> 
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+			<version>${slf4j.version}</version>
+		</dependency>
+
+		<dependency> 
+			<groupId>ch.qos.logback</groupId>
+			<artifactId>logback-classic</artifactId>
+			<version>${logback-classic.version}</version>
+		</dependency>
+
+		<!-- Testing -->
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>${junit.version}</version>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+
+	<!-- Build Plugin Management -->
+	<build>
+		<finalName>${project.artifactId}</finalName>
+		<plugins>
+      		<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>${maven-compiler-plugin.version}</version>
+				<configuration>
+					<source>${java.version}</source>
+					<target>${java.version}</target>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-war-plugin</artifactId>
+				<version>${maven-war-plugin.version}</version>
+			</plugin>
+	   	</plugins>
+	</build>
+</project>

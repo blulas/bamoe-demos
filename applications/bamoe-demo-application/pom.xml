@@ -1,0 +1,136 @@
+<?xml version="1.0"?>
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <modelVersion>4.0.0</modelVersion>
+
+	<!-- POM -->
+  	<groupId>com.ibm.bamoe.demos.applications</groupId>
+	<artifactId>bamoe-demo-application</artifactId>
+	<version>1.0.0</version>
+	<packaging>jar</packaging>
+	<name>bamoe-demo-application</name>
+	<description>BAMOE Demo: Command Line Interface (CLI) Application</description>
+
+    <!-- Global Properties -->
+	<properties>
+		<!-- General Properties -->
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+
+		<!-- Java Properties -->
+		<java.version>21</java.version>
+
+		<!-- Common Maven Plugins -->
+		<maven.compiler.source>${java.version}</maven.compiler.source>
+		<maven.compiler.target>${java.version}</maven.compiler.target>
+        <maven.compiler.parameters>true</maven.compiler.parameters>
+		<maven.compiler.plugin.version>3.10.1</maven.compiler.plugin.version>
+        <maven.resources.plugin.version>3.2.4</maven.resources.plugin.version>
+		<maven.surefire.plugin.version>3.0.0-M7</maven.surefire.plugin.version>
+		<maven-shade-plugin.version>3.2.4</maven-shade-plugin.version>
+
+		<!-- Testing Properties -->
+      	<skipTests>true</skipTests>
+		<junit.version>5.8.2</junit.version>
+
+		<!-- Logging Properties -->
+		<slf4j.version>2.0.17</slf4j.version>
+		<logback-classic.version>1.5.20</logback-classic.version>
+
+		<!-- Shared Fact Model -->
+      	<fact.model.groupId>com.ibm.bamoe.demos.common</fact.model.groupId>
+      	<fact.model.artifactId>fact-model</fact.model.artifactId>
+      	<fact.model.version>1.0.0</fact.model.version>
+
+		<!-- Customer Rules -->
+      	<customer-rules.groupId>com.ibm.bamoe.demos.embedded</customer-rules.groupId>
+      	<customer-rules.artifactId>customer-rules</customer-rules.artifactId>
+      	<customer-rules.version>1.0.0</customer-rules.version>
+
+		<!-- Banking Deposit Rules -->
+      	<banking-deposit-rules.groupId>com.ibm.bamoe.demos.embedded</banking-deposit-rules.groupId>
+      	<banking-deposit-rules.artifactId>banking-deposit-rules</banking-deposit-rules.artifactId>
+      	<banking-deposit-rules.version>1.0.0</banking-deposit-rules.version>
+
+		<!-- Traffic Violation Decision Model  -->
+      	<traffic-violation-decision-model.groupId>com.ibm.bamoe.demos.embedded</traffic-violation-decision-model.groupId>
+      	<traffic-violation-decision-model.artifactId>traffic-violation-decision-model</traffic-violation-decision-model.artifactId>
+      	<traffic-violation-decision-model.version>1.0.0</traffic-violation-decision-model.version>
+
+		<!-- Banking Process  -->
+      	<banking-process.groupId>com.ibm.bamoe.demos.embedded</banking-process.groupId>
+      	<banking-process.artifactId>banking-process</banking-process.artifactId>
+      	<banking-process.version>1.0.0</banking-process.version>
+	</properties>
+
+	<dependencies>
+		<!-- Sharable Fact Model -->
+		<dependency>
+			<groupId>${fact.model.groupId}</groupId>
+			<artifactId>${fact.model.artifactId}</artifactId>
+			<version>${fact.model.version}</version>
+		</dependency>
+
+		<!-- Embedded Customer Rules -->
+		<dependency>
+			<groupId>${customer-rules.groupId}</groupId>
+			<artifactId>${customer-rules.artifactId}</artifactId>
+			<version>${customer-rules.version}</version>
+		</dependency>
+
+		<!-- Embedded Banking Deposit Rules -->
+		<dependency>
+			<groupId>${banking-deposit-rules.groupId}</groupId>
+			<artifactId>${banking-deposit-rules.artifactId}</artifactId>
+			<version>${banking-deposit-rules.version}</version>
+		</dependency>
+
+		<!-- Embedded Traffic Violation Decision Model -->
+		<dependency>
+			<groupId>${traffic-violation-decision-model.groupId}</groupId>
+			<artifactId>${traffic-violation-decision-model.artifactId}</artifactId>
+			<version>${traffic-violation-decision-model.version}</version>
+		</dependency>
+
+		<!-- Embedded Banking Process -->
+		<dependency>
+			<groupId>${banking-process.groupId}</groupId>
+			<artifactId>${banking-process.artifactId}</artifactId>
+			<version>${banking-process.version}</version>
+		</dependency>
+
+		<!-- Logging -->
+		<dependency> 
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+			<version>${slf4j.version}</version>
+		</dependency>
+
+		<dependency> 
+			<groupId>ch.qos.logback</groupId>
+			<artifactId>logback-classic</artifactId>
+			<version>${logback-classic.version}</version>
+		</dependency>
+
+		<!-- Testing -->
+		<dependency>
+			<groupId>org.junit.jupiter</groupId>
+			<artifactId>junit-jupiter</artifactId>
+			<version>${junit.version}</version>
+			<scope>test</scope>
+    	</dependency>		
+	</dependencies>
+	
+	<!-- Build Plugin Management -->
+    <build>
+        <defaultGoal>install</defaultGoal>
+        <finalName>${project.artifactId}</finalName>
+
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>${maven.surefire.plugin.version}</version>
+			</plugin>
+		</plugins>
+	</build>
+</project>
