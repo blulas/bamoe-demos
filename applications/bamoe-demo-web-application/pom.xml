@@ -8,7 +8,7 @@
 	<version>1.0.0</version>
 	<packaging>war</packaging>
 	<name>bamoe-demo-web-application</name>
-	<description>BAMOE Demo: Command Line Interface (CLI) Application</description>
+	<description>BAMOE Demo: Tomcat 10 Web Application</description>
 
     <!-- Global Properties -->
 	<properties>

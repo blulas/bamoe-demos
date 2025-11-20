@@ -41,7 +41,7 @@ public class BankingDepositTests {
 
             BankingDepositRules rules = new BankingDepositRules();
             RuleResults results = rules.processDeposits(maxAvailabilityAmount, deposits);
-            logger.info(" Banking Deposit Rules: Results: " + results);
+            logger.info("Banking Deposit Rules: Results: " + results);
         } catch (Exception e) {
             logger.error("Exception: " + e.getMessage());
         }
