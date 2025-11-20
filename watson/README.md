@@ -1,12 +1,12 @@
 # IBM Business Automation Manager Open Editions Demos - Watson Orchestrate using BAMOE Business Service Projects
 
 # Overview
-The purpose of this repostitory module is to demonstrate how different types of BAMOE projects can utilize the embedded engine API's for things like rules, decision models, and stateless processes.  This architecture is mostly considered
-a `legacy` approach, since Drools has been around for over 20 years and some customers never adopted the remote KIE Server or Kogito approach.  Other reasons is that customer applications require the rules/data to be in the same process, with
-no remote calls whatsoever.  We call this the `BAMOE Embedded` approach.  
+The purpose of this repostitory module is to demonstrate how a Watson Orchestrate Agent interacts with varous BAMOE business services, via the BAMOE MCP Server.
 
-The following demonstration projects available are:
+## Repository Modules
+This is a multi-module repository, with the following modules:
 
+- [**WxO BAMOE**](wxo-bame) is a simple Watson Orchestrate demo which interacts with both decision and process based business services.
 
 ## Additional Information (*Appendicies*)
 This repository is focused on business automation using [**IBM Business Automation Manager Open Editions**](https://www.ibm.com/docs/en/ibamoe/9.3.x) products, specifically the IBM build of [**Kogito**](https://kogito.kie.org/) known as **IBM Decision Manager Open Edition (DMOE)** and **IBM Process Automation Manager Open Edition (PAMOE)**, leveraging [**Quarkus**](https://quarkus.io/) or [**Spring Boot**](https://spring.io/) as the assoicated container runtime.  The following online documentation is available in order to learn various aspects of these products and frameworks:
