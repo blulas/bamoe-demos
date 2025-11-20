@@ -1,0 +1,70 @@
+################################################
+# REST Endpoint Tests
+################################################
+
+@local.host.url = http://localhost:8080 
+@remote.host.url = https://banking-deposit-service-bamoe-demos.apps-crc.testing
+@host={{remote.host.url}}
+@contentType = application/json
+
+################################################
+# Process Deposit
+################################################
+
+POST {{host}}/banking-deposit-service/process-deposit HTTP/1.1
+content-type: {{contentType}}
+
+{
+  "amount": 650,
+  "maxAvailabilityAmount": 500,
+  "type": "PersonalCheck",
+    "customer": {
+      "accountNumber": "ABC123",
+      "lastName": "White",
+      "firstName": "Walter",
+      "age": 61
+    }
+}
+
+
+################################################
+# Process Deposits
+################################################
+
+POST {{host}}/banking-deposit-service/process-deposits HTTP/1.1
+content-type: {{contentType}}
+
+[
+  {
+    "amount": 650,
+    "maxAvailabilityAmount": 500,
+    "type": "PersonalCheck",
+     "customer": {
+        "accountNumber": "ABC123",
+        "lastName": "White",
+        "firstName": "Walter",
+        "age": 61
+     }
+  },
+  {
+    "amount": 1750,
+    "maxAvailabilityAmount": 500,
+    "type": "PersonalCheck",
+     "customer": {
+        "accountNumber": "ABC123",
+        "lastName": "White",
+        "firstName": "Walter",
+        "age": 61
+     }
+  },
+  {
+    "amount": 1750,
+    "maxAvailabilityAmount": 500,
+    "type": "PayrollCheck",
+     "customer": {
+        "accountNumber": "ABC123",
+        "lastName": "White",
+        "firstName": "Walter",
+        "age": 61
+     }
+  }]

@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?><project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
-  <groupId>com.ibm.techsales.bamoe.demos.quarkus</groupId>
+  <groupId>com.ibm.bamoe.demos.quarkus</groupId>
   <artifactId>bamoe-quarkus-business-service-demos</artifactId>
   <version>1.0.0</version>
   <packaging>pom</packaging>
 
   <modules>
+    <module>banking-deposit-service</module>
+    <module>traffic-violation-service</module>
   </modules>
 </project>

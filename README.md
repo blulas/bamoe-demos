@@ -1,7 +1,5 @@
 # IBM Business Automation Manager Open Editions Demos
 
-![](./doc/images/under-construction-small.png)
-
 # Overview
 This repository includes a set of IBM BAMOE demos.  
 
