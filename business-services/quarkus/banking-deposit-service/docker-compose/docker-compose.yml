@@ -1,0 +1,10 @@
+services:
+
+  quarkus-banking-deposit-service:
+    container_name: quarkus-banking-deposit-service
+    image: dev.local/bamoe-demos/quarkus-banking-deposit-service:1.0.0
+    platform: linux/amd64
+    ports:
+      - 8080:8080
+      
+  

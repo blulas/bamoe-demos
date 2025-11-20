@@ -1,0 +1,15 @@
+################################################
+# REST Endpoint Tests
+################################################
+
+@local.host.url = http://localhost:8080
+@remote.host.url = https://quarkus-banking-service-bamoe-demos.apps-crc.testing
+@host={{remote.host.url}}
+@contentType = application/json
+
+POST {{host}}/process HTTP/1.1
+content-type: {{contentType}}
+
+{
+}
+

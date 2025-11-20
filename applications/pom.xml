@@ -7,7 +7,7 @@
   <packaging>pom</packaging>
 
   <modules>
-    <module>bamoe-demo-application</module>
-    <module>bamoe-demo-web-application</module>
+      <module>bamoe-demo-application</module>
+      <module>bamoe-demo-web-application</module>
   </modules>
 </project>

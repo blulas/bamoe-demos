@@ -1,0 +1,10 @@
+services:
+
+  quarkus-traffic-violation-service:
+    container_name: quarkus-traffic-violation-service
+    image: dev.local/bamoe-demos/quarkus-traffic-violation-service:1.0.0
+    platform: linux/amd64
+    ports:
+      - 8080:8080
+      
+  
