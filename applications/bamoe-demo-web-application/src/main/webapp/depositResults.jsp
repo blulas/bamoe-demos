@@ -2,6 +2,7 @@
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.util.List"%>
 <%@page import="com.ibm.bamoe.demos.model.Deposit"%>
+<%@page import="com.ibm.bamoe.demos.model.DepositType"%>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -94,43 +95,101 @@
             <div class="col-lg-6 fadeInLeft animated" data-animation="fadeInLeft" data-delay="1s" style="animation-delay: 1s;">
                 <div class="bg-secondary rounded p-5">
                     <h4 class="text-white mb-4">Bank Deposit Results</h4>
-                        <form>
-                            <a href="#" class="text-start text-white d-block mb-2">Deposit Results</a>
-                            <div class="row g-3">
-                                <%
-                                    // List the updated facts
-                                    out.print(request.getAttribute("deposit"));
-                                    out.print("<br/>");
-                                %>
+                    <form>
+                        <!-- Deposit Information -->
+                        <a href="#" class="text-start text-white d-block mb-2">Deposit Results</a>
+
+                        <!-- Get all the execution results from the response to render -->
+                        <%  
+                            Deposit deposit = (Deposit) request.getAttribute("deposit"); 
+                            String depositId = deposit.getId();
+                            String depositType = (String) deposit.getType().toString();
+                            double depositAmount = (Double) deposit.getAmount();
+                            double amountAvailable = (Double) deposit.getAmountAvailable();
+                            double amountOnHold = (Double) deposit.getAmountOnHold();
+                            int daysOnHold = (int) deposit.getNumberOfDaysOnHold();
+                        %>
+                        
+                        <div class="input-group">
+                            <div class="d-flex align-items-center bg-light text-body rounded-start p-2">
+                                <span class="fas fa-map-marker-alt"></span><span class="ms-1">Transaction ID: </span>
                             </div>
-                            
-                            <br/>
-                            
-                            <a href="#" class="text-start text-white d-block mb-2">Rule Execution Results</a>
-                            <div class="row g-3">
+                            <input name="depositId" value="<%= depositId %>" class="form-control" type="text" readonly>
+                        </div></br>
+
+                        <div class="input-group">
+                            <div class="d-flex align-items-center bg-light text-body rounded-start p-2">
+                                <span class="fas fa-map-marker-alt"></span><span class="ms-1">Deposit Type: </span>
+                            </div>
+                            <input name="depositType" value="<%= depositType %>" class="form-control" type="text" readonly>
+                        </div></br>
+
+                        <div class="input-group">
+                            <div class="d-flex align-items-center bg-light text-body rounded-start p-2">
+                                <span class="fas fa-map-marker-alt"></span><span class="ms-1">Deposit Amount: $</span>
+                            </div>
+                            <input name="depositAmount" value="<%= depositAmount %>" min="0.00" step="0.01" class="form-control" type="number" readonly>
+                        </div></br>
+
+                        <div class="input-group">
+                            <div class="d-flex align-items-center bg-light text-body rounded-start p-2">
+                                <span class="fas fa-map-marker-alt"></span><span class="ms-1">Amount Available: $</span>
+                            </div>
+                            <input name="amountAvailable" value="<%= amountAvailable %>" min="0.00" step="0.01" class="form-control" type="number" readonly>
+                        </div></br>
+
+                        <div class="input-group">
+                            <div class="d-flex align-items-center bg-light text-body rounded-start p-2">
+                                <span class="fas fa-map-marker-alt"></span><span class="ms-1">Amount On Hold: $</span>
+                            </div>
+                            <input name="amountOnHold" value="<%= amountOnHold %>" min="0.00" step="0.01" class="form-control" type="number" readonly>
+                        </div></br>
+
+                        <div class="input-group">
+                            <div class="d-flex align-items-center bg-light text-body rounded-start p-2">
+                                <span class="fas fa-map-marker-alt"></span><span class="ms-1">Days On Hold: </span>
+                            </div>
+                            <input name="daysOnHold" value="<%= daysOnHold %>" class="form-control" type="number" readonly>
+                        </div></br>
+                        
+                        <!-- Rule Execution Information -->
+                        <a href="#" class="text-start text-white d-block mb-2">Rule Execution Results</a>
+
+                        <!-- Get all the execution results from the response to render -->
+                        <%
+                            String executionDuration = (String) request.getAttribute("executionDuration");
+                            int firedRuleCount = (int) request.getAttribute("firedRuleCount");
+                        %>
+
+                        <div class="input-group">
+                            <div class="d-flex align-items-center bg-light text-body rounded-start p-2">
+                                </span><span class="ms-1">Execution Duration:</span>
+                            </div>
+                            <input name="executionDuration" value="<%= executionDuration %>" class="form-control" type="text" readonly="" style="top: 1px;">
+                        </div></br>
+                        
+                        <div class="input-group">
+                            <div class="d-flex align-items-center bg-light text-body rounded-start p-2">
+                                </span><span class="ms-1">Fired Rule Count:</span>
+                            </div>
+                            <input name="firedRuleCount" value="<%= firedRuleCount %>" class="form-control" type="number" readonly="" style="top: 1px;">
+                        </div></br>
+
+                        <div class="input-group">
+                            <select name="rulesFired" class="form-select" aria-label="List of Fired Rules">
+                                <option selected>List of Fired Rules</option>
+
                                 <%
-                                    out.print("Started On: " + request.getAttribute("startedOn"));
-                                    out.print("<br/>");
-                                    out.print("Completed On: " + request.getAttribute("completedOn"));
-                                    out.print("<br/>");
-                                    out.print("Execution Duration: " + request.getAttribute("executionDuration"));
-                                    out.print("<br/>");
-                                    out.print("Fired Rule Count: " + request.getAttribute("firedRuleCount"));
-                                    out.print("<br/>");
+                                    List<String> rulesFired = (List<String>) request.getAttribute("rulesFired");
+                                    for (int i = 0; i < rulesFired.size(); i++) {
 
-                                    // List the rules that fired
-                                    out.print("Rules Fired: ");
-                                    out.print("<br/>");
-
-                                    List<String> rulesFired = (ArrayList<String>) request.getAttribute("rulesFired");
-                                    for (String firedRule : rulesFired) {
-
-                                        out.print(firedRule);
-                                        out.print("<br/>");
+                                        String rule = (String) rulesFired.get(i);
+                                        out.print("<option value=\"" + rule + "\">" + rule + "</option>");
                                     }
                                 %>
-                            </div>
-                        </form>
+                            </select>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>

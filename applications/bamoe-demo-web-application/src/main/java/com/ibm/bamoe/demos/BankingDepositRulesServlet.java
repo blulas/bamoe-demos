@@ -70,10 +70,8 @@ public class BankingDepositRulesServlet extends HttpServlet {
         logger.info("Banking Deposit Rules: Results: " + results);
 
         // Set the rule execution results
-        request.setAttribute("startedOn", results.getStartedOn());
-        request.setAttribute("completedOn", results.getCompletedOn());
+        request.setAttribute("executionDuration", results.getExecutionDuration().getDays() + " days, " + results.getExecutionDuration().getHours() + " hours, " + results.getExecutionDuration().getMinutes() + " miniutes, " + results.getExecutionDuration().getMilliseconds() + " milliseconds");
         request.setAttribute("firedRuleCount", results.getFiredRuleCount());
-        request.setAttribute("executionDuration", results.getExecutionDuration().toString());
         request.setAttribute("rulesFired", results.getRulesFired());
 
         // Get the updated deposit
