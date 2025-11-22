@@ -53,7 +53,7 @@
                             <a href="index.jsp" class="nav-item nav-link active">Home</a>
                             <a href="about.jsp" class="nav-item nav-link">About</a>
                             <a href="deposits.jsp" class="nav-item nav-link">Banking Deposits</a>
-                            <a href="driver.jsp" class="nav-item nav-link">Driving History</a>
+                            <a href="trafficViolation.jsp" class="nav-item nav-link">Traffic Violations</a>
                         </div>
                     </div>
                 </nav>
@@ -90,12 +90,12 @@
                                 <div class="col-lg-6">
                                     <div class="about-item-inner border p-4">
                                         <div>
-                                            <a href="driver.jsp">
+                                            <a href="trafficViolation.jsp">
                                                 <img src="img/drivers-license.png" class="img-fluid h-50 w-50" alt="Icon">
                                             </a>
                                         </div>
-                                        <h5 class="mb-3">Driving History</h5>
-                                        <p class="mb-0">This page will allow you to validate a custoner's driving history, which determines if a license should be suspended and how many points to assign to the driver's license.</p>
+                                        <h5 class="mb-3">Traffic Violations</h5>
+                                        <p class="mb-0">This page will allow you to process a traffic violation, which determines if a license should be suspended and how many points to assign to the driver's license.</p>
                                     </div>
                                 </div>
                             </div>

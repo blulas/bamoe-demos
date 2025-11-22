@@ -44,7 +44,7 @@
         <div class="container">
             <nav class="navbar navbar-expand-lg navbar-light">
                 <a href="" class="navbar-brand p-0">
-                        <img src="img/bamoe.png" alt="IBM Business Automation Manager Open Editions">
+                    <img src="img/bamoe.png" alt="IBM Business Automation Manager Open Editions">
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
                     <span class="fa fa-bars"></span>
@@ -54,7 +54,7 @@
                         <a href="index.jsp" class="nav-item nav-link active">Home</a>
                         <a href="about.jsp" class="nav-item nav-link">About</a>
                         <a href="deposits.jsp" class="nav-item nav-link">Banking Deposits</a>
-                        <a href="driver.jsp" class="nav-item nav-link">Driving History</a>
+                        <a href="trafficViolation.jsp" class="nav-item nav-link">Traffic Violations</a>
                     </div>
                 </div>
             </nav>
@@ -101,10 +101,12 @@
 
                             <a href="#" class="text-start text-white d-block mb-2">Deposit Information</a>
                             <div class="row g-3">
-                                <div class="col-12">
-                                    <select name="depositType" class="form-select" aria-label="Default select example">
-                                        <option selected>Select Deposit Type</option>
-                                        <option value="Cash">Cash</option>
+                                <div class="input-group">
+                                    <div class="d-flex align-items-center bg-light text-body rounded-start p-2">
+                                        <span class="fas fa-map-marker-alt"></span> <span class="ms-1">Deposit Type: </span>
+                                    </div>
+                                    <select required name="depositType" class="form-select" aria-label="Cash">
+                                        <option selected value="Cash">Cash</option>
                                         <option value="PersonalCheck">Personal Check</option>
                                         <option value="OfficialCheck">Official Check</option>
                                         <option value="PayrollCheck">Payroll Check</option>
@@ -115,42 +117,38 @@
 
                                 <div class="input-group">
                                     <div class="d-flex align-items-center bg-light text-body rounded-start p-2">
-                                        <span class="fas fa-map-marker-alt"></span> <span class="ms-1">Deposit Amount</span>
+                                        <span class="fas fa-map-marker-alt"></span> <span class="ms-1">Deposit Amount: </span>
                                     </div>
-                                    <input name="depositAmount" class="form-control" type="number" step="0.01" placeholder="Enter the amount of the deposit" aria-label="Enter the amount of the deposit" style="left: 0px;">
-                                </div>
-
-                                <div class="col-12">
-                                    <div class="input-group">
-                                        <div class="d-flex align-items-center bg-light text-body rounded-start p-2">
-                                            <span class="fas fa-calendar-alt"></span><span class="ms-1">Date of Deposit</span>
-                                        </div>
-                                        <input name="depositDate" class="form-control" type="date">
-                                    </div>
-                                </div>
-
-                                <div class="col-12">
-                                    <a href="#" class="text-start text-white d-block mb-2">Banking Customer Information</a>
-                                    <div class="input-group">
-                                        <div class="d-flex align-items-center bg-light text-body rounded-start p-2">
-                                            <span class="fas fa-map-marker-alt"></span><span class="ms-1">Account Number</span>
-                                        </div>
-                                        <input name="accountNumber" class="form-control" type="text" placeholder="Enter your account number" aria-label="Enter your account number">
-                                    </div>
+                                    <input required name="depositAmount" class="form-control" type="number" min="0.01" step="0.01" step="0.01" placeholder="Enter the amount of the deposit" aria-label="Enter the amount of the deposit" style="left: 0px;">
                                 </div>
 
                                 <div class="input-group">
                                     <div class="d-flex align-items-center bg-light text-body rounded-start p-2">
-                                        <span class="fas fa-map-marker-alt"></span><span class="ms-1">First Name</span>
+                                        <span class="fas fa-calendar-alt"></span><span class="ms-1">Date of Deposit: </span>
                                     </div>
-                                    <input name="firstName" class="form-control" type="text" placeholder="Enter customer's first name" aria-label="Enter customer's first name">
+                                    <input name="depositDate" class="form-control" type="date">
+                                </div>
+
+                                <a href="#" class="text-start text-white d-block mb-2">Banking Customer Information</a>
+                                <div class="input-group">
+                                    <div class="d-flex align-items-center bg-light text-body rounded-start p-2">
+                                        <span class="fas fa-map-marker-alt"></span><span class="ms-1">Account Number: </span>
+                                    </div>
+                                    <input required name="accountNumber" class="form-control" type="text" placeholder="Enter your account number" aria-label="Enter your account number">
                                 </div>
 
                                 <div class="input-group">
                                     <div class="d-flex align-items-center bg-light text-body rounded-start p-2">
-                                        <span class="fas fa-map-marker-alt"></span><span class="ms-1">Last Name</span>
+                                        <span class="fas fa-map-marker-alt"></span><span class="ms-1">First Name: </span>
                                     </div>
-                                    <input name="lastName" class="form-control" type="text" placeholder="Enter customer's last name" aria-label="Enter customer's last name">
+                                    <input required name="firstName" class="form-control" type="text" placeholder="Enter customer's first name" aria-label="Enter customer's first name">
+                                </div>
+
+                                <div class="input-group">
+                                    <div class="d-flex align-items-center bg-light text-body rounded-start p-2">
+                                        <span class="fas fa-map-marker-alt"></span><span class="ms-1">Last Name: </span>
+                                    </div>
+                                    <input required name="lastName" class="form-control" type="text" placeholder="Enter customer's last name" aria-label="Enter customer's last name">
                                 </div>
                             </div>
 
@@ -176,7 +174,6 @@
     <script src="lib/easing/easing.min.js"></script>
     <script src="lib/waypoints/waypoints.min.js"></script>
     <script src="lib/owlcarousel/owl.carousel.min.js"></script>
-    
 
     <!-- Template Javascript -->
     <script src="js/main.js"></script>

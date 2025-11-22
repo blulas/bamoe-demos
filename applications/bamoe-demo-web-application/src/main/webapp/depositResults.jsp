@@ -50,7 +50,7 @@
         <div class="container">
             <nav class="navbar navbar-expand-lg navbar-light">
                 <a href="" class="navbar-brand p-0">
-                        <img src="img/bamoe.png" alt="IBM Business Automation Manager Open Editions">
+                    <img src="img/bamoe.png" alt="IBM Business Automation Manager Open Editions">
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
                     <span class="fa fa-bars"></span>
@@ -60,7 +60,7 @@
                         <a href="index.jsp" class="nav-item nav-link active">Home</a>
                         <a href="about.jsp" class="nav-item nav-link">About</a>
                         <a href="deposits.jsp" class="nav-item nav-link">Banking Deposits</a>
-                        <a href="driver.jsp" class="nav-item nav-link">Driving History</a>
+                        <a href="trafficViolation.jsp" class="nav-item nav-link">Traffic Violations</a>
                     </div>
                 </div>
             </nav>
@@ -89,7 +89,7 @@
     </div>
     <!-- Title End -->
 
-    <!-- Bank Deposit Submission Start -->
+    <!-- Bank Deposit Start -->
     <div class="container py-4">
         <div class="row g-5">
             <div class="col-lg-6 fadeInLeft animated" data-animation="fadeInLeft" data-delay="1s" style="animation-delay: 1s;">

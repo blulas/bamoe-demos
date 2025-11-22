@@ -53,7 +53,7 @@
                             <a href="index.jsp" class="nav-item nav-link active">Home</a>
                             <a href="about.jsp" class="nav-item nav-link">About</a>
                             <a href="deposits.jsp" class="nav-item nav-link">Banking Deposits</a>
-                            <a href="driver.jsp" class="nav-item nav-link">Driving History</a>
+                            <a href="trafficViolation.jsp" class="nav-item nav-link">Trafic Violations</a>
                         </div>
                     </div>
                 </nav>
