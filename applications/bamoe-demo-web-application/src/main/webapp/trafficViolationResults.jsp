@@ -110,7 +110,9 @@
                                     for (int i = 0; i < results.size(); i++) {
 
                                         DecisionResult result = (DecisionResult) results.get(i);
-                                        String resultDisplay = result.getDecision() + ": " + result.getResult().toString();
+                                        String rawDisplay = result.getDecision() + ": " + result.getResult().toString();
+                                        String rawNoLeftBrace = rawDisplay.replace("{", "");
+                                        String resultDisplay = rawNoLeftBrace.replace("}", "");
                                         out.print("<option value=\"" + resultDisplay + "\">" + resultDisplay + "</option>");
                                     }
                                 %>
