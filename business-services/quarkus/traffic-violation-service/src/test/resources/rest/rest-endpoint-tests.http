@@ -2,10 +2,16 @@
 # REST Endpoint Tests
 ################################################
 
-@local.host.url = http://localhost:8080
+@local.host.url = http://localhost:8081
 @remote.host.url = https://quarkus-traffic-violation-service-bamoe-demos.apps-crc.testing
-@host={{remote.host.url}}
+@host={{local.host.url}}
 @contentType = application/json
+
+GET {{host}}/traffic-violation-service/version HTTP/1.1
+content-type: text/plain
+
+{
+}
 
 POST {{host}}//traffic-violation-service/process-traffic-violation HTTP/1.1
 content-type: {{contentType}}

@@ -8,6 +8,7 @@ import org.slf4j.LoggerFactory;
 import jakarta.ws.rs.Produces;
 import jakarta.ws.rs.Consumes;
 import jakarta.ws.rs.core.Response;
+import jakarta.ws.rs.GET;
 import jakarta.ws.rs.POST;
 import jakarta.ws.rs.Path;
 import jakarta.ws.rs.core.MediaType;
@@ -20,14 +21,19 @@ import com.ibm.bamoe.demos.model.TrafficViolationServiceRequest;
 import com.ibm.bamoe.demos.embedded.TrafficViolationDecisionModel;
 
 @Path("/traffic-violation-service")
-@Produces(MediaType.APPLICATION_JSON)
-@Consumes(MediaType.APPLICATION_JSON)
 @ApplicationScoped
 public class TrafficViolationServiceResource {
 
     private static final Logger logger = LoggerFactory.getLogger(TrafficViolationServiceResource.class);
 
     @Inject TrafficViolationDecisionModel decisionModel;
+
+    @GET
+    @Path("version")
+    @Produces(MediaType.TEXT_PLAIN)
+    public String getVersion() {
+        return "IBM BAMOE Version: 9.3.0-ibm-0007";
+    }
 
     @POST()
 	@Path("process-traffic-violation")
