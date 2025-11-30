@@ -83,6 +83,7 @@
         </div>
         <!-- Title End -->
 
+    <!-- Driver Start -->
     <div class="container py-4">
         <div class="row g-5">
             <div class="col-lg-6 fadeInLeft animated" data-animation="fadeInLeft" data-delay="1s" style="animation-delay: 1s;">
@@ -143,9 +144,16 @@
                                     <div class="d-flex align-items-center bg-light text-body rounded-start p-2">
                                         <span class="fas fa-map-marker-alt"></span><span class="ms-1">Driver's Age: </span>
                                     </div>
-                                    <input required name="driverAge" class="form-control" min="1" max="99" type="number" placeholder="Enter the driver's age" aria-label="Enter the driver's age">
+                                    <input required name="driverAge" class="form-control" type="number" min="1" max="99" placeholder="Enter the driver's age" aria-label="Enter the driver's age">
                                 </div>
 
+                                <div class="input-group">
+                                    <div class="d-flex align-items-center bg-light text-body rounded-start p-2">
+                                        <span class="fas fa-map-marker-alt"></span><span class="ms-1">Points on Driver's License: </span>
+                                    </div>
+                                    <input required name="driverPoints" class="form-control" type="number" default=0 min="0" max="99" placeholder="Enter the points on the driver's license" aria-label="Enter the points on the driver's license">
+                                </div>
+                                
                                 <div class="input-group">
                                     <div class="d-flex align-items-center bg-light text-body rounded-start p-2">
                                         <span class="fas fa-map-marker-alt"></span><span class="ms-1">City: </span>
@@ -171,7 +179,7 @@
             </div>
         </div>
     </div>
-    <!-- Bank Deposit Submission End -->
+    <!-- Driver End -->
 
     <!-- Back to Top -->
     <a href="#" class="btn btn-secondary btn-lg-square rounded-circle back-to-top"><i class="fa fa-arrow-up"></i></a>   

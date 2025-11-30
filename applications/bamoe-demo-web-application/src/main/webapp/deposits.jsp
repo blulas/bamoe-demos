@@ -84,7 +84,7 @@
     </div>
     <!-- Title End -->
 
-    <!-- Bank Deposit Submission Start -->
+    <!-- Bank Deposit Start -->
     <div class="container py-4">
         <div class="row g-5">
             <div class="col-lg-6 fadeInLeft animated" data-animation="fadeInLeft" data-delay="1s" style="animation-delay: 1s;">
@@ -119,7 +119,7 @@
                                     <div class="d-flex align-items-center bg-light text-body rounded-start p-2">
                                         <span class="fas fa-map-marker-alt"></span> <span class="ms-1">Deposit Amount: </span>
                                     </div>
-                                    <input required name="depositAmount" class="form-control" type="number" min="0.01" step="0.01" step="0.01" placeholder="Enter the amount of the deposit" aria-label="Enter the amount of the deposit" style="left: 0px;">
+                                    <input required name="depositAmount" class="form-control" type="number" min="0.01" step="0.01" placeholder="Enter the amount of the deposit" aria-label="Enter the amount of the deposit" style="left: 0px;">
                                 </div>
 
                                 <div class="input-group">
@@ -162,7 +162,7 @@
             </div>
         </div>
     </div>
-    <!-- Bank Deposit Submission End -->
+    <!-- Bank Deposit End -->
 
     <!-- Back to Top -->
     <a href="#" class="btn btn-secondary btn-lg-square rounded-circle back-to-top"><i class="fa fa-arrow-up"></i></a>   

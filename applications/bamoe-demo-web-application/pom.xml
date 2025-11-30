@@ -16,16 +16,24 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 	
-		<!-- Maven Properties -->
-		<maven-compiler-plugin.version>3.10.1</maven-compiler-plugin.version>
-		<maven-war-plugin.version>3.3.2</maven-war-plugin.version>
-
 		<!-- Java Properties -->
 		<java.version>21</java.version>
 		<jandex-maven-plugin.version>1.2.1</jandex-maven-plugin.version>
 
+		<!-- Maven Properties -->
+		<maven-compiler-plugin.version>3.10.1</maven-compiler-plugin.version>
+		<maven-war-plugin.version>3.3.2</maven-war-plugin.version>
+
+		<!-- Property Management -->
+		<smallrye-config.version>3.14.1</smallrye-config.version>
+
 		<!-- Java Servlet Properties -->
-		<java-servlet.version>4.0.1</java-servlet.version>
+		<jakarta-servlet-api.version>6.2.0-M1</jakarta-servlet-api.version>
+		<jakarta-ws-rs-api.version>4.0.0</jakarta-ws-rs-api.version>
+		<javax.ws.rs-api.vesion>2.1</javax.ws.rs-api.vesion>
+
+		<!-- RESTEasy Properties -->
+		<resteasy.version>7.0.0.Final</resteasy.version>
 
 		<!-- Logging Properties -->
 		<slf4j.version>2.0.17</slf4j.version>
@@ -86,12 +94,44 @@
 			<version>${banking-process.version}</version>
 		</dependency>
 
-		<!-- Jakarta Servlets -->
+		<!-- Global Property Management and Configuration -->
+		<dependency>
+			<groupId>io.smallrye.config</groupId>
+			<artifactId>smallrye-config</artifactId>
+			<version>${smallrye-config.version}</version>
+		</dependency>
+
+		<!-- Jakarta -->
 		<dependency>
 			<groupId>jakarta.servlet</groupId>
 			<artifactId>jakarta.servlet-api</artifactId>
-			<version>6.2.0-M1</version>
+			<version>${jakarta-servlet-api.version}</version>
 			<scope>provided</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>jakarta.ws.rs</groupId>
+			<artifactId>jakarta.ws.rs-api</artifactId>
+			<version>4.0.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>javax.ws.rs</groupId>
+			<artifactId>javax.ws.rs-api</artifactId>
+			<version>${javax.ws.rs-api.vesion}</version>
+		</dependency>
+
+		<!-- RESTEasy -->
+		<dependency>
+			<groupId>org.jboss.resteasy</groupId>
+			<artifactId>resteasy-client</artifactId>
+			<version>${resteasy.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.jboss.resteasy</groupId>
+			<artifactId>resteasy-jackson2-provider</artifactId>
+			<version>${resteasy.version}</version>
 		</dependency>
 
 		<!-- Logging -->

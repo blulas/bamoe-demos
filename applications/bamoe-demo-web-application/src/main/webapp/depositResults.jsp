@@ -100,8 +100,8 @@
                         <a href="#" class="text-start text-white d-block mb-2">Deposit Results</a>
 
                         <!-- Get all the execution results from the response to render -->
-                        <%  
-                            Deposit deposit = (Deposit) request.getAttribute("deposit"); 
+                        <%
+                            Deposit deposit = (Deposit) request.getAttribute("deposit");
                             String depositId = deposit.getId();
                             String depositType = (String) deposit.getType().toString();
                             double depositAmount = (Double) deposit.getAmount();
@@ -194,7 +194,7 @@
             </div>
         </div>
     </div>
-    <!-- Bank Deposit Submission End -->
+    <!-- Bank Deposit End -->
 
     <!-- Back to Top -->
     <a href="#" class="btn btn-secondary btn-lg-square rounded-circle back-to-top"><i class="fa fa-arrow-up"></i></a>   
