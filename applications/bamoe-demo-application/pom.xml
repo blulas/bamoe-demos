@@ -28,6 +28,16 @@
 		<maven.surefire.plugin.version>3.0.0-M7</maven.surefire.plugin.version>
 		<maven-shade-plugin.version>3.2.4</maven-shade-plugin.version>
 
+		<!-- Property Management -->
+		<smallrye-config.version>3.14.1</smallrye-config.version>
+
+		<!-- Java Servlet Properties -->
+		<jakarta-ws-rs-api.version>4.0.0</jakarta-ws-rs-api.version>
+		<javax.ws.rs-api.vesion>2.1</javax.ws.rs-api.vesion>
+
+		<!-- RESTEasy Properties -->
+		<resteasy.version>7.0.0.Final</resteasy.version>
+
 		<!-- Testing Properties -->
       	<skipTests>true</skipTests>
 		<junit.version>5.8.2</junit.version>
@@ -96,6 +106,32 @@
 			<groupId>${banking-process.groupId}</groupId>
 			<artifactId>${banking-process.artifactId}</artifactId>
 			<version>${banking-process.version}</version>
+		</dependency>
+
+		<!-- Jakarta -->
+		<dependency>
+			<groupId>jakarta.ws.rs</groupId>
+			<artifactId>jakarta.ws.rs-api</artifactId>
+			<version>4.0.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>javax.ws.rs</groupId>
+			<artifactId>javax.ws.rs-api</artifactId>
+			<version>${javax.ws.rs-api.vesion}</version>
+		</dependency>
+
+		<!-- RESTEasy -->
+		<dependency>
+			<groupId>org.jboss.resteasy</groupId>
+			<artifactId>resteasy-client</artifactId>
+			<version>${resteasy.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.jboss.resteasy</groupId>
+			<artifactId>resteasy-jackson2-provider</artifactId>
+			<version>${resteasy.version}</version>
 		</dependency>
 
 		<!-- Logging -->

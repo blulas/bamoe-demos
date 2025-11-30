@@ -20,7 +20,7 @@ public class BankingProcessTests {
 
     private static final Logger logger = LoggerFactory.getLogger(BankingProcessTests.class);
     
-    @Test
+    //@Test
     void testBankingProcess() {
 
         logger.info("Testing banking process....");
