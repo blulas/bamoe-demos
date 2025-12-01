@@ -1,11 +1,9 @@
 # IBM Business Automation Manager Open Editions Demos - Applications
 
 # Overview
-The purpose of this repostitory module is to provide a set of client applications which integrate embedded rules and business services.
+The purpose of this repostitory module is to provide a set of client applications which integrate embedded rules and business services.  The following demonstration projects available are:
 
-The following demonstration projects available are:
-
-- [**BAMOE Demo Application**](./bamoe-demo-applicationl) is a simply Java command-line application which simulates a client application which embeds one or more rule/decision model projects.
+- [**BAMOE Demo Application**](./bamoe-demo-applicationl) is a simply Java command-line application which simulates a client application which which invokes rules and business services in multiple ways, both embedded as well as remotely.
 - [**BAMOE Demo Web Application**](./bamoe-demo-web-application) is a Tomcat 10 based web application which invokes rules and business services in multiple ways, both embedded as well as remotely.
 
 ## Additional Information (*Appendicies*)

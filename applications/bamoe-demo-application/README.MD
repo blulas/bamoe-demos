@@ -8,6 +8,12 @@ Once you have configured your local development environment, you need to perform
 mvn clean test
 ```
 
+## How To Run & Test
+Once you have built the application, you can run the project's JUnit tests by utilizing the standard Maven test lifecycle command `mvn clean test`, which will execute all the unit tests.  If testing remote, be sure to start the following business services:
+
+- - [**Banking Deposit Service**](../../business-services/quarkus/banking-deposit-service), which is a business service that depends on the embedded [Banking Deposit Rules](../../embedded/banking-deposit-rules/) project.  
+- - [**Trafic Violation Service**](../../business-services/quarkus/traffic-violation-service), which is a business service that depends on the embedded [Traffic Violation Decision Model](../../embedded/traffic-violation-decision-model/) project.  
+
 ## Additional Information (*Appendicies*)
 This repository is focused on business automation using [**IBM Business Automation Manager Open Editions**](https://www.ibm.com/docs/en/ibamoe/9.2.x) products, specifically the IBM build of [**Kogito**](https://kogito.kie.org/) known as **IBM Decision Manager Open Edition (DMOE)** and **IBM Process Automation Manager Open Edition (PAMOE)**, leveraging [**Quarkus**](https://quarkus.io/) or [**Spring Boot** _(currently for Decisions only)_](https://spring.io/) as the assoicated container runtime.  The following online documentation is available in order to learn various aspects of these products and frameworks:
 
