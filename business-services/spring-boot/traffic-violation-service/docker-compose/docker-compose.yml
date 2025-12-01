@@ -1,0 +1,10 @@
+services:
+
+  sb-traffic-violation-service:
+    container_name: sb-traffic-violation-service
+    image: dev.local/bamoe-demos/sb-traffic-violation-service:1.0.0
+    platform: linux/amd64
+    ports:
+      - 8080:8080
+      
+  

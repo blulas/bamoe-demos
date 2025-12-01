@@ -1,0 +1,10 @@
+services:
+
+  sb-banking-deposit-service:
+    container_name: sb-banking-deposit-service
+    image: dev.local/bamoe-demos/sb-banking-deposit-service:1.0.0
+    platform: linux/amd64
+    ports:
+      - 8080:8080
+      
+  
