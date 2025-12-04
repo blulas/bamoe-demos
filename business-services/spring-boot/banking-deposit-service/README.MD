@@ -19,8 +19,6 @@ Quarkus comes with a built-in development mode, which means you can update the a
 mvn clean compile spring-boot:run
 ```
 
-Click [here](https://quarkus.io/guides/maven-tooling#dev-mode) for more information on Quarkus Dev Mode.
-
 ## How To Test
 There are various methods used to test this application's REST API endpoints.  Included in the `src/test/resources/rest` folder is a set of example test cases using the [VS Code REST Client](https://marketplace.visualstudio.com/items?itemName=humao.rest-client).  
 
@@ -31,7 +29,6 @@ In order to determine which REST endpoints have been published by the applicatio
 You are free to use any unit testing framework you choose, so long as it can call Java or REST API methods programmatically, such as:
 
 - [Using REST Client](https://marketplace.visualstudio.com/items?itemName=humao.rest-client)
-- [Using Quarkus for Unit Testing](https://quarkus.io/guides/getting-started-testing)
 - [Using JUnit for Unit Testing](https://junit.org/junit5/docs/current/user-guide/)
 
 ## Additional Information (*Appendicies*)
@@ -40,4 +37,6 @@ This repository is focused on business automation using [**IBM Business Automati
 - [**Apache Maven**](https://maven.apache.org/) is a free and open source software project management and comprehension tool. Based on  the concept of a project object model (POM), Maven can manage a project’s build, reporting and documentation from a central piece of  information. A **getting started guide** is available [here](http://maven.apache.org/guides/getting-started/).
 
 - [**Git**](https://git-scm.com//) is a free and open source distributed version control system designed to handle everything from small to very large projects with speed and efficiency. There is a **handbook** available [here](https://guides.github.com/introduction/git-handbook/), as well as various **guides** for learning and working with Git available [here](https://guides.github.com/)
+
+- [**Spring Boot**](https://spring.io/) - Spring makes programming Java quicker, easier, and safer for everybody. Spring’s focus on speed, simplicity, and productivity has made it the world's most popular Java framework.  Spring’s flexible libraries are trusted by developers all over the world. Spring delivers delightful experiences to millions of end-users every day.  Spring’s flexible and comprehensive set of extensions and third-party libraries let developers build almost any application imaginable.  Spring Boot transforms how you approach Java programming tasks, radically streamlining your experience. Spring Boot combines necessities such as an application context and an auto-configured, embedded web server to make microservice development a cinch. To go even faster, you can combine Spring Boot with Spring Cloud’s rich set of supporting libraries, servers, patterns, and templates, to safely deploy entire microservices-based architectures into the cloud, in record time.  You can find a useful introdution to this technology at [**Getting Started with Spring Boot**](https://spring.io/quickstart).
 

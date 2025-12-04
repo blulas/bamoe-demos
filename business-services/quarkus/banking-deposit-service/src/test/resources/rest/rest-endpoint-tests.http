@@ -4,7 +4,7 @@
 
 @local.host.url = http://localhost:8081
 @remote.host.url = https://quarkus-banking-deposit-service-bamoe-demos.apps-crc.testing
-@host={{local.host.url}}
+@host={{remote.host.url}}
 @contentType = application/json
 
 ################################################
