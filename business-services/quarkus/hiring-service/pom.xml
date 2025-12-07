@@ -31,6 +31,8 @@
 		<!-- BAMOE -->
 		<bamoe.version>9.3.0-ibm-0007</bamoe.version>
 		<bamoe.runtime.version>3.20.2.2</bamoe.runtime.version>
+		<bamoe.product>72984f114b54496a8a44be139154a988</bamoe.product>
+		<bamoe.product.name>IBM Process Automation Manager Open Edition</bamoe.product.name>
 		
 		<!-- Container Images -->
 		<jkube.version>1.18.1</jkube.version>
@@ -335,11 +337,11 @@
 									<pod>
 										<property>
 											<name>productID</name>
-											<value>72984f114b54496a8a44be139154a988</value>
+											<value>${bamoe.product}</value>
 										</property>
 										<property>
 											<name>productName</name>
-											<value>IBM Process Automation Manager Open Edition</value>
+											<value>${bamoe.product.name}</value>
 										</property>
 										<property>
 											<name>productMetric</name>
