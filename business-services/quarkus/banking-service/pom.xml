@@ -31,7 +31,7 @@
 		<!-- BAMOE -->
 		<bamoe.version>9.3.0-ibm-0007</bamoe.version>
 		<bamoe.runtime.version>3.20.2.2</bamoe.runtime.version>
-		
+
 		<!-- Testing Properties -->
       	<skipTests>true</skipTests>
 
@@ -150,6 +150,7 @@
    	<profiles>
         <profile>
             <id>dev</id>
+
             <activation>
                 <activeByDefault>true</activeByDefault>
             </activation>
@@ -157,94 +158,170 @@
             <properties>
                 <quarkus.profile>dev</quarkus.profile>
             </properties>
-        </profile>
 
-        <profile>
-            <id>docker</id>
-            <properties>
-                <quarkus.profile>docker</quarkus.profile>
-            </properties>
+			<build>
+				<defaultGoal>install</defaultGoal>
+				<finalName>${project.artifactId}</finalName>
+				<plugins>
+					<plugin>
+						<groupId>io.quarkus</groupId>
+						<artifactId>quarkus-maven-plugin</artifactId>
+						<version>${bamoe.runtime.version}</version>
+						<executions>
+							<execution>
+								<goals>
+									<goal>build</goal>
+									<goal>generate-code</goal>
+									<goal>generate-code-tests</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
 
-            <dependencies>
-                <dependency>
-                    <groupId>io.quarkus</groupId>
-                    <artifactId>quarkus-container-image-jib</artifactId>
-                </dependency>
-            </dependencies>
+					<plugin>
+						<groupId>org.jboss.jandex</groupId>
+						<artifactId>jandex-maven-plugin</artifactId>
+						<version>${jandex-maven-plugin.version}</version>
+						<executions>
+							<execution>
+								<id>make-index</id>
+								<goals>
+									<goal>jandex</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+
+					<plugin>
+						<artifactId>maven-antrun-plugin</artifactId>
+						<executions>
+							<execution>
+								<phase>package</phase>
+								<goals>
+									<goal>run</goal>
+								</goals>
+								<configuration>
+									<target>
+										<copy includeEmptyDirs="true" overwrite="true" failonerror="false" quiet="true" todir="./docker-compose/svg">
+											<fileset dir="target/classes/META-INF/processSVG/"/>
+										</copy>
+									</target>
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
         </profile>
 
         <profile>
             <id>openshift</id>
+
             <properties>
-                <quarkus.profile>openshift</quarkus.profile>
+                <quarkus.profile>prod</quarkus.profile>
+
+				<!-- Container Images -->
+				<eclipse-jkube.version>1.18.1</eclipse-jkube.version>
+				<jkube.build.switchToDeployment>true</jkube.build.switchToDeployment>
+				<jkube.enricher.jkube-openshift-route.tlsTermination>edge</jkube.enricher.jkube-openshift-route.tlsTermination>
+				<jkube.container-image.from>ubi9/openjdk-21</jkube.container-image.from>
             </properties>
 
-            <dependencies>
-                <dependency>
-                    <groupId>io.quarkus</groupId>
-                    <artifactId>quarkus-container-image-jib</artifactId>
-                </dependency>
+			<build>
+				<defaultGoal>install</defaultGoal>
+				<finalName>${project.artifactId}</finalName>
+				<plugins>
+					<plugin>
+						<groupId>io.quarkus</groupId>
+						<artifactId>quarkus-maven-plugin</artifactId>
+						<version>${bamoe.runtime.version}</version>
+						<executions>
+							<execution>
+								<goals>
+									<goal>build</goal>
+									<goal>generate-code</goal>
+									<goal>generate-code-tests</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
 
-                <dependency>
-                    <groupId>io.quarkus</groupId>
-                    <artifactId>quarkus-openshift</artifactId>
-                </dependency>
-            </dependencies>
+					<plugin>
+						<groupId>org.eclipse.jkube</groupId>
+						<artifactId>openshift-maven-plugin</artifactId>
+						<version>${eclipse-jkube.version}</version>
+						<configuration>
+							<resources>
+								<annotations>
+									<!-- IBM License Service Annotations (pod level) -->
+									<pod>
+										<property>
+											<name>productID</name>
+											<value>72984f114b54496a8a44be139154a988</value>
+										</property>
+										<property>
+											<name>productName</name>
+											<value>IBM Process Automation Manager Open Edition</value>
+										</property>
+										<property>
+											<name>productMetric</name>
+											<value>VIRTUAL_PROCESSOR_CORE</value>
+										</property>
+										<property>
+											<name>productChargedContainers</name>
+											<value>All</value>
+										</property>
+									</pod>
+								</annotations>
+							</resources>
+						</configuration>
+						<executions>
+							<execution>
+								<id>jkube</id>
+								<goals>
+									<goal>resource</goal>
+									<goal>build</goal>
+									<goal>apply</goal>
+									<goal>deploy</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+
+					<plugin>
+						<groupId>org.jboss.jandex</groupId>
+						<artifactId>jandex-maven-plugin</artifactId>
+						<version>${jandex-maven-plugin.version}</version>
+						<executions>
+							<execution>
+								<id>make-index</id>
+								<goals>
+									<goal>jandex</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+
+					<plugin>
+						<artifactId>maven-antrun-plugin</artifactId>
+						<executions>
+							<execution>
+								<phase>package</phase>
+								<goals>
+									<goal>run</goal>
+								</goals>
+								<configuration>
+									<target>
+										<copy includeEmptyDirs="true" overwrite="true" failonerror="false" quiet="true" todir="./docker-compose/svg">
+											<fileset dir="target/classes/META-INF/processSVG/"/>
+										</copy>
+									</target>
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
         </profile>
     </profiles>
-
-	<!-- Build Plugin Management -->
-    <build>
-        <defaultGoal>install</defaultGoal>
-        <finalName>${project.artifactId}</finalName>
-        <plugins>
-            <plugin>
-                <groupId>io.quarkus</groupId>
-                <artifactId>quarkus-maven-plugin</artifactId>
-                <version>${bamoe.runtime.version}</version>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>build</goal>
-                            <goal>generate-code</goal>
-                            <goal>generate-code-tests</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-
-			<plugin>
-				<groupId>org.jboss.jandex</groupId>
-				<artifactId>jandex-maven-plugin</artifactId>
-				<version>${jandex-maven-plugin.version}</version>
-				<executions>
-					<execution>
-						<id>make-index</id>
-						<goals>
-							<goal>jandex</goal>
-						</goals>
-					</execution>
-				</executions>
-        	</plugin>
-
-			<plugin>
-				<artifactId>maven-antrun-plugin</artifactId>
-				<executions>
-					<execution>
-						<phase>package</phase>
-						<goals>
-							<goal>run</goal>
-						</goals>
-						<configuration>
-							<target>
-                				<copy includeEmptyDirs="true" overwrite="true" failonerror="false" quiet="true" todir="./docker-compose/svg">
-									<fileset dir="target/classes/META-INF/processSVG/"/>
-								</copy>
-							</target>
-						</configuration>
-					</execution>
-				</executions>
-			</plugin>
-        </plugins>
-    </build>
 </project>
