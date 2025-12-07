@@ -32,6 +32,12 @@
 		<bamoe.version>9.3.0-ibm-0007</bamoe.version>
 		<bamoe.runtime.version>3.4.9</bamoe.runtime.version>
 
+		<!-- Container Images -->
+		<jkube.version>1.18.1</jkube.version>
+		<jkube.useDeployments>true</jkube.useDeployments>
+		<jkube.route.type>edge</jkube.route.type>
+		<jkube.base.image>ubi9/openjdk-21</jkube.base.image>
+
 		<!-- Testing Properties -->
       	<skipTests>true</skipTests>
 
@@ -113,83 +119,200 @@
    	<profiles>
         <profile>
             <id>dev</id>
+
             <activation>
                 <activeByDefault>true</activeByDefault>
             </activation>
-        </profile>
 
-        <profile>
-            <id>docker</id>
+            <properties>
+                <quarkus.profile>dev</quarkus.profile>
+            </properties>
+
+			<build>
+				<defaultGoal>install</defaultGoal>
+				<finalName>${project.artifactId}</finalName>
+				<plugins>
+					<plugin>
+						<groupId>org.kie.kogito</groupId>
+						<artifactId>kogito-maven-plugin</artifactId>
+						<version>${bamoe.version}</version>
+						<executions>
+							<execution>
+								<phase>compile</phase>
+								<goals>
+									<goal>generateModel</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+
+					<plugin>
+						<groupId>org.springframework.boot</groupId>
+						<artifactId>spring-boot-maven-plugin</artifactId>
+						<executions>
+							<execution>
+								<goals>
+									<goal>repackage</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+
+					<plugin>
+						<groupId>org.jboss.jandex</groupId>
+						<artifactId>jandex-maven-plugin</artifactId>
+						<version>${jandex-maven-plugin.version}</version>
+						<executions>
+							<execution>
+								<id>make-index</id>
+								<goals>
+									<goal>jandex</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+
+					<plugin>
+						<artifactId>maven-antrun-plugin</artifactId>
+						<executions>
+							<execution>
+								<phase>package</phase>
+								<goals>
+									<goal>run</goal>
+								</goals>
+								<configuration>
+									<target>
+										<copy includeEmptyDirs="true" overwrite="true" failonerror="false" quiet="true" todir="./docker-compose/svg">
+											<fileset dir="target/classes/META-INF/processSVG/"/>
+										</copy>
+									</target>
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
         </profile>
 
         <profile>
             <id>openshift</id>
+
+            <properties>
+                <quarkus.profile>prod</quarkus.profile>
+
+				<!-- Container Images -->
+				<eclipse-jkube.version>${jkube.version}</eclipse-jkube.version>
+				<jkube.build.switchToDeployment>${jkube.useDeployments}</jkube.build.switchToDeployment>
+				<jkube.enricher.jkube-openshift-route.tlsTermination>${jkube.route.type}</jkube.enricher.jkube-openshift-route.tlsTermination>
+				<jkube.container-image.from>${jkube.base.image}</jkube.container-image.from>
+            </properties>
+
+			<build>
+				<defaultGoal>install</defaultGoal>
+				<finalName>${project.artifactId}</finalName>
+				<plugins>
+					<plugin>
+						<groupId>org.kie.kogito</groupId>
+						<artifactId>kogito-maven-plugin</artifactId>
+						<version>${bamoe.version}</version>
+						<executions>
+							<execution>
+								<phase>compile</phase>
+								<goals>
+									<goal>generateModel</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+
+					<plugin>
+						<groupId>org.springframework.boot</groupId>
+						<artifactId>spring-boot-maven-plugin</artifactId>
+						<executions>
+							<execution>
+								<goals>
+									<goal>repackage</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+
+					<plugin>
+						<groupId>org.eclipse.jkube</groupId>
+						<artifactId>openshift-maven-plugin</artifactId>
+						<version>${eclipse-jkube.version}</version>
+						<configuration>
+							<resources>
+								<annotations>
+									<!-- IBM License Service Annotations (pod level) -->
+									<pod>
+										<property>
+											<name>productID</name>
+											<value>72984f114b54496a8a44be139154a988</value>
+										</property>
+										<property>
+											<name>productName</name>
+											<value>IBM Process Automation Manager Open Edition</value>
+										</property>
+										<property>
+											<name>productMetric</name>
+											<value>VIRTUAL_PROCESSOR_CORE</value>
+										</property>
+										<property>
+											<name>productChargedContainers</name>
+											<value>All</value>
+										</property>
+									</pod>
+								</annotations>
+							</resources>
+						</configuration>
+						<executions>
+							<execution>
+								<id>jkube</id>
+								<goals>
+									<goal>resource</goal>
+									<goal>build</goal>
+									<goal>apply</goal>
+									<goal>deploy</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+
+					<plugin>
+						<groupId>org.jboss.jandex</groupId>
+						<artifactId>jandex-maven-plugin</artifactId>
+						<version>${jandex-maven-plugin.version}</version>
+						<executions>
+							<execution>
+								<id>make-index</id>
+								<goals>
+									<goal>jandex</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+
+					<plugin>
+						<artifactId>maven-antrun-plugin</artifactId>
+						<executions>
+							<execution>
+								<phase>package</phase>
+								<goals>
+									<goal>run</goal>
+								</goals>
+								<configuration>
+									<target>
+										<copy includeEmptyDirs="true" overwrite="true" failonerror="false" quiet="true" todir="./docker-compose/svg">
+											<fileset dir="target/classes/META-INF/processSVG/"/>
+										</copy>
+									</target>
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
         </profile>
     </profiles>
-
-	<!-- Build Plugin Management -->
-	<build>
-		<defaultGoal>install</defaultGoal>
-		<finalName>${project.artifactId}</finalName>
-		<plugins>
-			<plugin>
-				<groupId>org.kie.kogito</groupId>
-				<artifactId>kogito-maven-plugin</artifactId>
-				<version>${bamoe.version}</version>
-				<executions>
-					<execution>
-			            <phase>compile</phase>
-            			<goals>
-              				<goal>generateModel</goal>
-            			</goals>
-					</execution>
-				</executions>
-			</plugin>
-
-			<plugin>
-        		<groupId>org.springframework.boot</groupId>
-        		<artifactId>spring-boot-maven-plugin</artifactId>
-        		<executions>
-          			<execution>
-            			<goals>
-              				<goal>repackage</goal>
-            			</goals>
-          			</execution>
-        		</executions>
-      		</plugin>
-
-			<plugin>
-				<groupId>org.jboss.jandex</groupId>
-				<artifactId>jandex-maven-plugin</artifactId>
-				<version>${jandex-maven-plugin.version}</version>
-				<executions>
-					<execution>
-						<id>make-index</id>
-						<goals>
-							<goal>jandex</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
-
-			<plugin>
-				<artifactId>maven-antrun-plugin</artifactId>
-				<executions>
-					<execution>
-						<phase>package</phase>
-						<goals>
-							<goal>run</goal>
-						</goals>
-						<configuration>
-							<target>
-								<copy includeEmptyDirs="true" overwrite="true" failonerror="false" quiet="true" todir="./docker-compose/svg">
-									<fileset dir="target/classes/META-INF/processSVG/"/>
-								</copy>
-							</target>
-						</configuration>
-					</execution>
-				</executions>
-			</plugin>
-		</plugins>
-	</build>
 </project>

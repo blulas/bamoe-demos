@@ -2,9 +2,9 @@
 # REST Endpoint Tests
 ################################################
 
-@local.host.url = http://localhost:8081
+@local.host.url = http://localhost:8080
 @remote.host.url = https://sb-banking-deposit-service-bamoe-demos.apps-crc.testing
-@host={{local.host.url}}
+@host={{remote.host.url}}
 @contentType = application/json
 
 ################################################

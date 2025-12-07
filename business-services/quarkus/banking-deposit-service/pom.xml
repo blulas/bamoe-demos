@@ -33,10 +33,10 @@
 		<bamoe.runtime.version>3.20.2.2</bamoe.runtime.version>
 
 		<!-- Container Images -->
-		<eclipse-jkube.version>1.18.1</eclipse-jkube.version>
-		<jkube.build.switchToDeployment>true</jkube.build.switchToDeployment>
-		<jkube.enricher.jkube-openshift-route.tlsTermination>edge</jkube.enricher.jkube-openshift-route.tlsTermination>
-		<jkube.container-image.from>ubi9/openjdk-21</jkube.container-image.from>
+		<jkube.version>1.18.1</jkube.version>
+		<jkube.useDeployments>true</jkube.useDeployments>
+		<jkube.route.type>edge</jkube.route.type>
+		<jkube.base.image>ubi9/openjdk-21</jkube.base.image>
 
 		<!-- Testing Properties -->
       	<skipTests>true</skipTests>
@@ -204,10 +204,10 @@
                 <quarkus.profile>prod</quarkus.profile>
 
 				<!-- Container Images -->
-				<eclipse-jkube.version>1.18.1</eclipse-jkube.version>
-				<jkube.build.switchToDeployment>true</jkube.build.switchToDeployment>
-				<jkube.enricher.jkube-openshift-route.tlsTermination>edge</jkube.enricher.jkube-openshift-route.tlsTermination>
-				<jkube.container-image.from>ubi9/openjdk-21</jkube.container-image.from>
+				<eclipse-jkube.version>${jkube.version}</eclipse-jkube.version>
+				<jkube.build.switchToDeployment>${jkube.useDeployments}</jkube.build.switchToDeployment>
+				<jkube.enricher.jkube-openshift-route.tlsTermination>${jkube.route.type}</jkube.enricher.jkube-openshift-route.tlsTermination>
+				<jkube.container-image.from>${jkube.base.image}</jkube.container-image.from>
             </properties>
 
 			<build>
