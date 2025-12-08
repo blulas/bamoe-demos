@@ -18,12 +18,14 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-import jakarta.ws.rs.client.Client;
 import jakarta.ws.rs.client.ClientBuilder;
-import jakarta.ws.rs.client.WebTarget;
 import jakarta.ws.rs.client.Entity;
+import jakarta.ws.rs.client.Invocation;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
+
+import org.jboss.resteasy.client.jaxrs.ResteasyClient;
+import org.jboss.resteasy.client.jaxrs.ResteasyWebTarget;
 
 import io.smallrye.config.SmallRyeConfig;
 import org.eclipse.microprofile.config.Config;
@@ -96,9 +98,10 @@ public class BankingDepositRulesServlet extends HttpServlet {
         String serviceURL = smallRyeConfig.getValue(BANKING_DEPOSIT_SERVICE_URL, String.class);
 
         // Create the REST client interface
-        Client client = ClientBuilder.newClient();
-        WebTarget target = client.target(serviceURL);
-
+        ResteasyClient client = (ResteasyClient) ClientBuilder.newClient();
+        ResteasyWebTarget target = client.target(serviceURL);
+        logger.info("Invoking url=" + serviceURL);
+        
         // Call the service to execute the banking deposit service
         RuleResults results = target.request(MediaType.APPLICATION_JSON).accept(MediaType.APPLICATION_JSON).post(Entity.json(deposit), RuleResults.class);
 

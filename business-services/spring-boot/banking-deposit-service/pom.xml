@@ -121,18 +121,21 @@
    	<profiles>
         <profile>
             <id>dev</id>
-
             <activation>
                 <activeByDefault>true</activeByDefault>
             </activation>
-
             <properties>
-                <quarkus.profile>dev</quarkus.profile>
+                <spring.profiles.active>dev</spring.profiles.active>
             </properties>
-
 			<build>
 				<defaultGoal>install</defaultGoal>
 				<finalName>${project.artifactId}</finalName>
+				<resources>
+					<resource>
+						<directory>src/main/resources</directory>
+						<filtering>true</filtering>
+					</resource>
+				</resources>
 				<plugins>
 					<plugin>
 						<groupId>org.kie.kogito</groupId>
@@ -147,7 +150,6 @@
 							</execution>
 						</executions>
 					</plugin>
-
 					<plugin>
 						<groupId>org.springframework.boot</groupId>
 						<artifactId>spring-boot-maven-plugin</artifactId>
@@ -159,7 +161,6 @@
 							</execution>
 						</executions>
 					</plugin>
-
 					<plugin>
 						<groupId>org.jboss.jandex</groupId>
 						<artifactId>jandex-maven-plugin</artifactId>
@@ -173,7 +174,6 @@
 							</execution>
 						</executions>
 					</plugin>
-
 					<plugin>
 						<artifactId>maven-antrun-plugin</artifactId>
 						<executions>
@@ -198,9 +198,8 @@
 
         <profile>
             <id>openshift</id>
-
             <properties>
-                <quarkus.profile>prod</quarkus.profile>
+                <spring.profiles.active>prod</spring.profiles.active>
 
 				<!-- Container Images -->
 				<eclipse-jkube.version>${jkube.version}</eclipse-jkube.version>
@@ -208,10 +207,15 @@
 				<jkube.enricher.jkube-openshift-route.tlsTermination>${jkube.route.type}</jkube.enricher.jkube-openshift-route.tlsTermination>
 				<jkube.container-image.from>${jkube.base.image}</jkube.container-image.from>
             </properties>
-
 			<build>
 				<defaultGoal>install</defaultGoal>
 				<finalName>${project.artifactId}</finalName>
+				<resources>
+					<resource>
+						<directory>src/main/resources</directory>
+						<filtering>true</filtering>
+					</resource>
+				</resources>
 				<plugins>
 					<plugin>
 						<groupId>org.kie.kogito</groupId>
@@ -226,7 +230,6 @@
 							</execution>
 						</executions>
 					</plugin>
-
 					<plugin>
 						<groupId>org.springframework.boot</groupId>
 						<artifactId>spring-boot-maven-plugin</artifactId>
@@ -238,7 +241,6 @@
 							</execution>
 						</executions>
 					</plugin>
-
 					<plugin>
 						<groupId>org.eclipse.jkube</groupId>
 						<artifactId>openshift-maven-plugin</artifactId>
@@ -280,7 +282,6 @@
 							</execution>
 						</executions>
 					</plugin>
-
 					<plugin>
 						<groupId>org.jboss.jandex</groupId>
 						<artifactId>jandex-maven-plugin</artifactId>
@@ -294,7 +295,6 @@
 							</execution>
 						</executions>
 					</plugin>
-
 					<plugin>
 						<artifactId>maven-antrun-plugin</artifactId>
 						<executions>

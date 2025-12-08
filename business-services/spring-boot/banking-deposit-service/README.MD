@@ -5,18 +5,18 @@ This module contains an example business service which can be packaged as a `sta
 Once you have configured your local development environment, you need to perform a Maven `build` of the repository.  This repository is built using `mvn clean install` by either the CI/CD pipeline or on a local developer workstation.  If deploying artifacts to an enterprise Maven repository, please use `mvn clean deploy`, which requires configuration of the `distributionManagement` section of your project's parent pom.xml.  This project is also configured to generate container images automatically by utilizing the `docker` or `openshift` profiles, as in the following examples:
 
 ```shell
-mvn clean package -Pdocker
+mvn clean package -Pdocker -Dspring.profiles.active=docker
 ```
 
 ```shell
-mvn clean package -Popenshift
+mvn clean package -Popenshift -Dspring.profiles.active=prod
 ```
 
 ## How To Run in Development Mode
 Quarkus comes with a built-in development mode, which means you can update the application sources, resources and configurations. The changes are automatically reflected in your running application. This is great to do development spanning UI and database as you see changes reflected immediately.  Dev mode enables hot deployment with background compilation, which means that when you modify your Java files or your resource files and refresh your browser these changes will automatically take effect. This works too for resource files like the configuration property file. The act of refreshing the browser triggers a scan of the workspace, and if any changes are detected the Java files are compiled, and the application is redeployed, then your request is serviced by the redeployed application. If there are any issues with compilation or deployment an error page will let you know.  To run the service in Quarkus Dev Mode, use the following command:
 
 ```shell
-mvn clean compile spring-boot:run
+mvn clean compile spring-boot:run -Pdev -Dspring.profiles.active=dev
 ```
 
 ## How To Test
