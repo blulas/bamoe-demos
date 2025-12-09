@@ -12,7 +12,6 @@ A Java project that is modelled as an Apache Maven project, and that contains al
 The following demonstration projects available are:
 
 - [**Spring Boot Banking Deposit Service**](./banking-deposit-service) is a Quarkus-based business service which demonstrates the use of simple banking deposit rules.
-- [**Spring Boot Banking Service**](./banking-service) is a Quarkus-based business service which demonstrates the use of simple banking deposit rules.
 - [**Spring Boot Hiring Service**](./hiring-service) is a Quarkus-based business service which demonstrates a simple hiring business process.
 - [**Spring Boot Traffic Violoation Service**](./traffic-violation-service) is a Quarkus-based business service which demonstrates the use of a decision model which determins a driver's license status.
 

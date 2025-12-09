@@ -1,0 +1,390 @@
+<?xml version="1.0"?>
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <modelVersion>4.0.0</modelVersion>
+
+	<!-- POM -->
+  	<groupId>com.ibm.bamoe.demos.services.springboot</groupId>
+	<artifactId>sb-hiring-service</artifactId>
+	<version>1.0.0</version>
+	<packaging>jar</packaging>
+	<name>sb-hiring-service</name>
+	<description>BAMOE Demo: Spring Boot Hiring Stateful Process Service</description>
+
+    <!-- Global Properties -->
+	<properties>
+		<!-- General Properties -->
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+
+		<!-- Java Properties -->
+		<java.version>21</java.version>
+		<jandex-maven-plugin.version>1.2.1</jandex-maven-plugin.version>
+
+		<!-- Common Maven Plugins -->
+		<maven.compiler.source>${java.version}</maven.compiler.source>
+		<maven.compiler.target>${java.version}</maven.compiler.target>
+        <maven.compiler.parameters>true</maven.compiler.parameters>
+		<maven.compiler.plugin.version>3.10.1</maven.compiler.plugin.version>
+        <maven.resources.plugin.version>3.2.0</maven.resources.plugin.version>
+		<maven.surefire.plugin.version>3.0.0-M7</maven.surefire.plugin.version>
+
+		<!-- BAMOE -->
+		<bamoe.version>9.3.0-ibm-0007</bamoe.version>
+		<bamoe.runtime.version>3.4.9</bamoe.runtime.version>
+		<bamoe.product>72984f114b54496a8a44be139154a988</bamoe.product>
+		<bamoe.product.name>IBM Process Automation Manager Open Edition</bamoe.product.name>
+		<bamoe.main.class>com.ibm.bamoe.demos.Application</bamoe.main.class>
+		
+		<!-- Container Images -->
+		<jkube.version>1.18.1</jkube.version>
+		<jkube.useDeployments>true</jkube.useDeployments>
+		<jkube.route.type>edge</jkube.route.type>
+		<jkube.base.image>ubi9/openjdk-21</jkube.base.image>
+
+		<!-- Testing Properties -->
+      	<skipTests>true</skipTests>
+	</properties>
+
+	<!-- Dependency Management -->
+	<dependencyManagement>
+		<dependencies>
+			<!-- BAMOE Runtime (Spring Boot)-->
+			<dependency>
+        		<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-dependencies</artifactId>
+				<version>${bamoe.runtime.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+
+			<!-- BAMOE -->
+			<dependency>
+				<groupId>com.ibm.bamoe</groupId>
+				<artifactId>bamoe-bom</artifactId>
+				<version>${bamoe.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+
+	<dependencies>
+		<!-- Spring Boot Runtime Dependencies -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-actuator</artifactId>
+		</dependency>
+
+        <dependency>
+            <groupId>org.jbpm</groupId>
+            <artifactId>jbpm-with-drools-spring-boot-starter</artifactId>
+        </dependency>
+
+        <!-- Persistence -->
+        <dependency>
+            <groupId>org.kie</groupId>
+            <artifactId>kie-addons-springboot-persistence-jdbc</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.jbpm</groupId>
+            <artifactId>jbpm-addons-springboot-usertask-storage-jpa</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-jdbc</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.flywaydb</groupId>
+            <artifactId>flyway-database-postgresql</artifactId>
+        </dependency>
+
+        <!-- Add ons -->
+        <dependency>
+            <groupId>org.kie</groupId>
+            <artifactId>kie-addons-springboot-process-management</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.kie</groupId>
+            <artifactId>kie-addons-springboot-process-svg</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.kie</groupId>
+            <artifactId>kie-addons-springboot-source-files</artifactId>
+        </dependency>
+
+        <!-- Data Index -->
+        <dependency>
+            <groupId>org.kie</groupId>
+            <artifactId>kogito-addons-springboot-data-index-jpa</artifactId>
+        </dependency>
+
+        <!-- Data Audit -->
+        <dependency>
+            <groupId>org.kie</groupId>
+            <artifactId>kogito-addons-springboot-data-audit</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.kie</groupId>
+            <artifactId>kogito-addons-springboot-data-audit-jpa</artifactId>
+        </dependency>
+
+        <!-- Jobs Service -->
+        <dependency>
+            <groupId>org.kie</groupId>
+            <artifactId>kogito-addons-springboot-embedded-jobs</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.kie</groupId>
+            <artifactId>kogito-addons-springboot-embedded-jobs-jpa</artifactId>
+        </dependency>
+
+		<!-- Testing -->
+		<dependency>
+      		<groupId>org.springframework.boot</groupId>
+      		<artifactId>spring-boot-starter-test</artifactId>
+      		<scope>test</scope>
+    	</dependency>
+
+		<dependency>
+			<groupId>io.rest-assured</groupId>
+			<artifactId>rest-assured</artifactId>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+
+	<!-- Profiles -->
+   	<profiles>
+        <profile>
+            <id>dev</id>
+
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+
+            <properties>
+                <spring.profiles.active>dev</spring.profiles.active>
+            </properties>
+
+            <dependencies>
+                <dependency>
+                    <groupId>com.h2database</groupId>
+                    <artifactId>h2</artifactId>
+                </dependency>
+            </dependencies>
+
+			<build>
+				<defaultGoal>install</defaultGoal>
+				<finalName>${project.artifactId}</finalName>
+
+				<resources>
+					<resource>
+						<directory>src/main/resources</directory>
+						<filtering>true</filtering>
+					</resource>
+				</resources>
+
+				<plugins>
+					<plugin>
+						<groupId>org.kie.kogito</groupId>
+						<artifactId>kogito-maven-plugin</artifactId>
+						<version>${bamoe.version}</version>
+						<executions>
+							<execution>
+								<phase>compile</phase>
+								<goals>
+									<goal>generateModel</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+
+					<plugin>
+						<groupId>org.springframework.boot</groupId>
+						<artifactId>spring-boot-maven-plugin</artifactId>
+						<executions>
+							<execution>
+								<goals>
+									<goal>repackage</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+
+					<plugin>
+						<groupId>org.jboss.jandex</groupId>
+						<artifactId>jandex-maven-plugin</artifactId>
+						<version>${jandex-maven-plugin.version}</version>
+						<executions>
+							<execution>
+								<id>make-index</id>
+								<goals>
+									<goal>jandex</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+
+					<plugin>
+						<artifactId>maven-antrun-plugin</artifactId>
+						<executions>
+							<execution>
+								<phase>package</phase>
+								<goals>
+									<goal>run</goal>
+								</goals>
+								<configuration>
+									<target>
+										<copy includeEmptyDirs="true" overwrite="true" failonerror="false" quiet="true" todir="./docker-compose/svg">
+											<fileset dir="target/classes/META-INF/processSVG/"/>
+										</copy>
+									</target>
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+        </profile>
+
+        <profile>
+            <id>openshift</id>
+
+            <properties>
+                <spring.profiles.active>prod</spring.profiles.active>
+
+				<!-- Container Images -->
+				<eclipse-jkube.version>${jkube.version}</eclipse-jkube.version>
+				<jkube.build.switchToDeployment>${jkube.useDeployments}</jkube.build.switchToDeployment>
+				<jkube.enricher.jkube-openshift-route.tlsTermination>${jkube.route.type}</jkube.enricher.jkube-openshift-route.tlsTermination>
+				<jkube.container-image.from>${jkube.base.image}</jkube.container-image.from>
+            </properties>
+
+			<build>
+				<defaultGoal>install</defaultGoal>
+				<finalName>${project.artifactId}</finalName>
+
+				<resources>
+					<resource>
+						<directory>src/main/resources</directory>
+						<filtering>true</filtering>
+					</resource>
+				</resources>
+
+				<plugins>
+					<plugin>
+						<groupId>org.kie.kogito</groupId>
+						<artifactId>kogito-maven-plugin</artifactId>
+						<version>${bamoe.version}</version>
+						<executions>
+							<execution>
+								<phase>compile</phase>
+								<goals>
+									<goal>generateModel</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+
+					<plugin>
+						<groupId>org.springframework.boot</groupId>
+						<artifactId>spring-boot-maven-plugin</artifactId>
+						<executions>
+							<execution>
+								<goals>
+									<goal>repackage</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+
+					<plugin>
+						<groupId>org.eclipse.jkube</groupId>
+						<artifactId>openshift-maven-plugin</artifactId>
+						<version>${eclipse-jkube.version}</version>
+						<configuration>
+							<resources>
+								<annotations>
+									<!-- IBM License Service Annotations (pod level) -->
+									<pod>
+										<property>
+											<name>productID</name>
+											<value>${bamoe.product}</value>
+										</property>
+										<property>
+											<name>productName</name>
+											<value>${bamoe.product.name}</value>
+										</property>
+										<property>
+											<name>productMetric</name>
+											<value>VIRTUAL_PROCESSOR_CORE</value>
+										</property>
+										<property>
+											<name>productChargedContainers</name>
+											<value>All</value>
+										</property>
+									</pod>
+								</annotations>
+							</resources>
+						</configuration>
+						<executions>
+							<execution>
+								<id>jkube</id>
+								<goals>
+									<goal>resource</goal>
+									<goal>build</goal>
+									<goal>apply</goal>
+									<goal>deploy</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+
+					<plugin>
+						<groupId>org.jboss.jandex</groupId>
+						<artifactId>jandex-maven-plugin</artifactId>
+						<version>${jandex-maven-plugin.version}</version>
+						<executions>
+							<execution>
+								<id>make-index</id>
+								<goals>
+									<goal>jandex</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+
+					<plugin>
+						<artifactId>maven-antrun-plugin</artifactId>
+						<executions>
+							<execution>
+								<phase>package</phase>
+								<goals>
+									<goal>run</goal>
+								</goals>
+								<configuration>
+									<target>
+										<copy includeEmptyDirs="true" overwrite="true" failonerror="false" quiet="true" todir="./docker-compose/svg">
+											<fileset dir="target/classes/META-INF/processSVG/"/>
+										</copy>
+									</target>
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+        </profile>
+    </profiles>
+</project>
