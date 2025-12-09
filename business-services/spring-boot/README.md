@@ -11,9 +11,9 @@ A Java project that is modelled as an Apache Maven project, and that contains al
 
 The following demonstration projects available are:
 
-- [**Spring Boot Banking Deposit Service**](./banking-deposit-service) is a Quarkus-based business service which demonstrates the use of simple banking deposit rules.
-- [**Spring Boot Hiring Service**](./hiring-service) is a Quarkus-based business service which demonstrates a simple hiring business process.
-- [**Spring Boot Traffic Violoation Service**](./traffic-violation-service) is a Quarkus-based business service which demonstrates the use of a decision model which determins a driver's license status.
+- [**Spring Boot Banking Deposit Service**](./banking-deposit-service) is a Spring Boot-based business service which demonstrates the use of simple banking deposit rules.
+- [**Spring Boot Hiring Service**](./hiring-service) is a Spring Boot-based business service which demonstrates a simple hiring business process.
+- [**Spring Boot Traffic Violoation Service**](./traffic-violation-service) is a Spring Boot-based business service which demonstrates the use of a decision model which determins a driver's license status.
 
 ## Additional Information (*Appendicies*)
 This repository is focused on business automation using [**IBM Business Automation Manager Open Editions**](https://www.ibm.com/docs/en/ibamoe/9.3.x) products, specifically the IBM build of [**Kogito**](https://kogito.kie.org/) known as **IBM Decision Manager Open Edition (DMOE)** and **IBM Process Automation Manager Open Edition (PAMOE)**, leveraging [**Quarkus**](https://quarkus.io/) or [**Spring Boot**](https://spring.io/) as the assoicated container runtime.  The following online documentation is available in order to learn various aspects of these products and frameworks:

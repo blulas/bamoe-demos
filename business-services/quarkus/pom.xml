@@ -8,7 +8,6 @@
 
   <modules>
       <module>banking-deposit-service</module>
-      <module>banking-service</module>
       <module>traffic-violation-service</module>
       <module>hiring-service</module>
   </modules>

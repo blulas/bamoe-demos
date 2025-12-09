@@ -12,7 +12,6 @@ A Java project that is modelled as an Apache Maven project, and that contains al
 The following demonstration projects available are:
 
 - [**Quarkus Banking Deposit Service**](./banking-deposit-service) is a Quarkus-based business service which demonstrates the use of simple banking deposit rules.
-- [**Quarkus Banking Service**](./banking-service) is a Quarkus-based business service which demonstrates the use of simple banking deposit rules.
 - [**Quarkus Hiring Service**](./hiring-service) is a Quarkus-based business service which demonstrates a simple hiring business process.
 - [**Quarkus Traffic Violoation Service**](./traffic-violation-service) is a Quarkus-based business service which demonstrates the use of a decision model which determins a driver's license status.
 
