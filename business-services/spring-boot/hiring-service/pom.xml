@@ -166,13 +166,9 @@
 
 	<!-- Profiles -->
    	<profiles>
+		<!-- Profile: DEV - This profile provides the supported dependencies and properties for running this buisness service locally using Dev mode, including a standalone (transient) persistence database -->
         <profile>
-            <id>dev</id>
-
-            <activation>
-                <activeByDefault>true</activeByDefault>
-            </activation>
-
+            <id>dev</id><activation><activeByDefault>true</activeByDefault></activation>
             <properties>
                 <spring.profiles.active>dev</spring.profiles.active>
             </properties>
@@ -183,84 +179,11 @@
                     <artifactId>h2</artifactId>
                 </dependency>
             </dependencies>
-
-			<build>
-				<defaultGoal>install</defaultGoal>
-				<finalName>${project.artifactId}</finalName>
-
-				<resources>
-					<resource>
-						<directory>src/main/resources</directory>
-						<filtering>true</filtering>
-					</resource>
-				</resources>
-
-				<plugins>
-					<plugin>
-						<groupId>org.kie.kogito</groupId>
-						<artifactId>kogito-maven-plugin</artifactId>
-						<version>${bamoe.version}</version>
-						<executions>
-							<execution>
-								<phase>compile</phase>
-								<goals>
-									<goal>generateModel</goal>
-								</goals>
-							</execution>
-						</executions>
-					</plugin>
-
-					<plugin>
-						<groupId>org.springframework.boot</groupId>
-						<artifactId>spring-boot-maven-plugin</artifactId>
-						<executions>
-							<execution>
-								<goals>
-									<goal>repackage</goal>
-								</goals>
-							</execution>
-						</executions>
-					</plugin>
-
-					<plugin>
-						<groupId>org.jboss.jandex</groupId>
-						<artifactId>jandex-maven-plugin</artifactId>
-						<version>${jandex-maven-plugin.version}</version>
-						<executions>
-							<execution>
-								<id>make-index</id>
-								<goals>
-									<goal>jandex</goal>
-								</goals>
-							</execution>
-						</executions>
-					</plugin>
-
-					<plugin>
-						<artifactId>maven-antrun-plugin</artifactId>
-						<executions>
-							<execution>
-								<phase>package</phase>
-								<goals>
-									<goal>run</goal>
-								</goals>
-								<configuration>
-									<target>
-										<copy includeEmptyDirs="true" overwrite="true" failonerror="false" quiet="true" todir="./docker-compose/svg">
-											<fileset dir="target/classes/META-INF/processSVG/"/>
-										</copy>
-									</target>
-								</configuration>
-							</execution>
-						</executions>
-					</plugin>
-				</plugins>
-			</build>
         </profile>
 
+		<!-- Profile: OpenShift - This profile provides the supported dependencies and properties for building and deploying the business service as a container image, specifically for Red Hat OpenShift-->
         <profile>
             <id>openshift</id>
-
             <properties>
                 <spring.profiles.active>prod</spring.profiles.active>
 
@@ -283,32 +206,6 @@
 				</resources>
 
 				<plugins>
-					<plugin>
-						<groupId>org.kie.kogito</groupId>
-						<artifactId>kogito-maven-plugin</artifactId>
-						<version>${bamoe.version}</version>
-						<executions>
-							<execution>
-								<phase>compile</phase>
-								<goals>
-									<goal>generateModel</goal>
-								</goals>
-							</execution>
-						</executions>
-					</plugin>
-
-					<plugin>
-						<groupId>org.springframework.boot</groupId>
-						<artifactId>spring-boot-maven-plugin</artifactId>
-						<executions>
-							<execution>
-								<goals>
-									<goal>repackage</goal>
-								</goals>
-							</execution>
-						</executions>
-					</plugin>
-
 					<plugin>
 						<groupId>org.eclipse.jkube</groupId>
 						<artifactId>openshift-maven-plugin</artifactId>
@@ -350,41 +247,82 @@
 							</execution>
 						</executions>
 					</plugin>
-
-					<plugin>
-						<groupId>org.jboss.jandex</groupId>
-						<artifactId>jandex-maven-plugin</artifactId>
-						<version>${jandex-maven-plugin.version}</version>
-						<executions>
-							<execution>
-								<id>make-index</id>
-								<goals>
-									<goal>jandex</goal>
-								</goals>
-							</execution>
-						</executions>
-					</plugin>
-
-					<plugin>
-						<artifactId>maven-antrun-plugin</artifactId>
-						<executions>
-							<execution>
-								<phase>package</phase>
-								<goals>
-									<goal>run</goal>
-								</goals>
-								<configuration>
-									<target>
-										<copy includeEmptyDirs="true" overwrite="true" failonerror="false" quiet="true" todir="./docker-compose/svg">
-											<fileset dir="target/classes/META-INF/processSVG/"/>
-										</copy>
-									</target>
-								</configuration>
-							</execution>
-						</executions>
-					</plugin>
 				</plugins>
 			</build>
         </profile>
     </profiles>
+
+	<!-- Common Build Profiles -->
+	<build>
+		<defaultGoal>install</defaultGoal>
+		<finalName>${project.artifactId}</finalName>
+
+		<resources>
+			<resource>
+				<directory>src/main/resources</directory>
+				<filtering>true</filtering>
+			</resource>
+		</resources>
+
+		<plugins>
+			<plugin>
+				<groupId>org.kie.kogito</groupId>
+				<artifactId>kogito-maven-plugin</artifactId>
+				<version>${bamoe.version}</version>
+				<executions>
+					<execution>
+						<phase>compile</phase>
+						<goals>
+							<goal>generateModel</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+				<executions>
+					<execution>
+						<goals>
+							<goal>repackage</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+
+			<plugin>
+				<groupId>org.jboss.jandex</groupId>
+				<artifactId>jandex-maven-plugin</artifactId>
+				<version>${jandex-maven-plugin.version}</version>
+				<executions>
+					<execution>
+						<id>make-index</id>
+						<goals>
+							<goal>jandex</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+
+			<plugin>
+				<artifactId>maven-antrun-plugin</artifactId>
+				<executions>
+					<execution>
+						<phase>package</phase>
+						<goals>
+							<goal>run</goal>
+						</goals>
+						<configuration>
+							<target>
+								<copy includeEmptyDirs="true" overwrite="true" failonerror="false" quiet="true" todir="./docker-compose/svg">
+									<fileset dir="target/classes/META-INF/processSVG/"/>
+								</copy>
+							</target>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
 </project>
