@@ -6,7 +6,6 @@ The purpose of this repostitory module is to demonstrate how different types of 
 The following demonstration projects available are:
 
 - [**Banking Deposit Rules**](./banking-deposit-rules) is is an example of an embedable rules (DRL or XLS) project.
-- [**Banking Stateless Process**](./banking-process) is a is an example of an embedable stateless process (BPMN) project.
 - [**Traffic Violation Decision Model**](./traffic-violation-decision-model) is an example of an embedable decision model (DMN) project.
 - [**Customer Rules**](./customer-rules) is an example of an embeddable rules (DRL or XLS) project which utilizes legacy DRL features such as DSL's and rule templates.
 

@@ -65,11 +65,6 @@
       	<traffic-violation-decision-model.groupId>com.ibm.bamoe.demos.embedded</traffic-violation-decision-model.groupId>
       	<traffic-violation-decision-model.artifactId>traffic-violation-decision-model</traffic-violation-decision-model.artifactId>
       	<traffic-violation-decision-model.version>1.0.0</traffic-violation-decision-model.version>
-
-		<!-- Banking Process  -->
-      	<banking-process.groupId>com.ibm.bamoe.demos.embedded</banking-process.groupId>
-      	<banking-process.artifactId>banking-process</banking-process.artifactId>
-      	<banking-process.version>1.0.0</banking-process.version>
 	</properties>
 
 	<dependencies>
@@ -99,13 +94,6 @@
 			<groupId>${traffic-violation-decision-model.groupId}</groupId>
 			<artifactId>${traffic-violation-decision-model.artifactId}</artifactId>
 			<version>${traffic-violation-decision-model.version}</version>
-		</dependency>
-
-		<!-- Embedded Banking Process -->
-		<dependency>
-			<groupId>${banking-process.groupId}</groupId>
-			<artifactId>${banking-process.artifactId}</artifactId>
-			<version>${banking-process.version}</version>
 		</dependency>
 
 		<!-- Jakarta -->
