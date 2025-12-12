@@ -29,8 +29,8 @@
 		<maven.surefire.plugin.version>3.0.0-M7</maven.surefire.plugin.version>
 
 		<!-- BAMOE -->
-		<bamoe.version>9.3.0-ibm-0007</bamoe.version>
-		<bamoe.runtime.version>3.20.2.2</bamoe.runtime.version>
+		<bamoe.version>9.3.1-ibm-0006</bamoe.version>
+		<bamoe.runtime.version>3.20.3</bamoe.runtime.version>
 		<bamoe.product>72984f114b54496a8a44be139154a988</bamoe.product>
 		<bamoe.product.name>IBM Process Automation Manager Open Edition</bamoe.product.name>
 		

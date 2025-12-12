@@ -29,8 +29,8 @@
 		<maven.surefire.plugin.version>3.0.0-M7</maven.surefire.plugin.version>
 
 		<!-- BAMOE -->
-		<bamoe.version>9.3.0-ibm-0007</bamoe.version>
-		<bamoe.runtime.version>3.4.9</bamoe.runtime.version>
+		<bamoe.version>9.3.1-ibm-0006</bamoe.version>
+		<bamoe.runtime.version>3.4.11</bamoe.runtime.version>
 		<bamoe.product>46b14c7f2f894218a7879b3f6416024f</bamoe.product>
 		<bamoe.product.name>IBM Decision Manager Open Edition</bamoe.product.name>
 
