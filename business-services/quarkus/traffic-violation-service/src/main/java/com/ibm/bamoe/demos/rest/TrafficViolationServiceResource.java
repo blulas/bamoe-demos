@@ -32,7 +32,7 @@ public class TrafficViolationServiceResource {
     @Path("version")
     @Produces(MediaType.TEXT_PLAIN)
     public String getVersion() {
-        return "IBM BAMOE Version: 9.3.0-ibm-0007";
+        return "IBM BAMOE Version: 9.3.1-ibm-0006";
     }
 
     @POST()

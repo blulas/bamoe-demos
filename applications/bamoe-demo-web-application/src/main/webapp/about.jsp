@@ -79,7 +79,7 @@
             <div class="container">
                 <div class="text-center mx-auto pb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 800px;">
                     <h1 class="display-5 text-capitalize mb-3">About IBM BAMOE Demo Web Application</h1>
-                    <p class="mb-0">This is a sample web-based application, written in Java Server Pages and deployed to Apache Tomcat 10.  The main purpose of this sample application is to show how rules and decision models can eithe be embedded or executed remotely, using IBM Business Automation Manager Open Editions v9.3.0.</p>                    </p>
+                    <p class="mb-0">This is a sample web-based application, written in Java Server Pages and deployed to Apache Tomcat 10.  The main purpose of this sample application is to show how rules and decision models can eithe be embedded or executed remotely, using IBM Business Automation Manager Open Editions v9.3.1.</p>                    </p>
 
                 <div class="row g-5">
                     <div class="fadeInLeft" data-wow-delay="0.2s">
@@ -103,8 +103,8 @@
                                                 <img src="img/bamoe.png" class="img-fluid h-50 w-50" alt="Icon">
                                             </a>
                                         </div>
-                                        <h5 class="mb-3">Powered By IBM BAMOE v9.3.0</h5>
-                                        <p class="mb-0">IBM Business Automation Manager Open Editions, v9.3.0 provides stateless rules & decision models which can either be embedded or executed remotely.</p>
+                                        <h5 class="mb-3">Powered By IBM BAMOE v9.3.1</h5>
+                                        <p class="mb-0">IBM Business Automation Manager Open Editions, v9.3.1 provides stateless rules & decision models which can either be embedded or executed remotely.</p>
                                     </div>
                                 </div>
                                 <div class="col-lg-6">

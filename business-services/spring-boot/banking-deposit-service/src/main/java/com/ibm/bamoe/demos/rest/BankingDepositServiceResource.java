@@ -30,7 +30,7 @@ public class BankingDepositServiceResource {
 
     @GetMapping(path="/version", produces=MediaType.TEXT_PLAIN_VALUE)
     public ResponseEntity<String> getVersion() {
-        return new ResponseEntity<String>("IBM BAMOE Version: 9.3.0-ibm-0007", HttpStatus.OK);
+        return new ResponseEntity<String>("IBM BAMOE Version: 9.3.1-ibm-0006", HttpStatus.OK);
     }
 
     @PostMapping(path="/process-deposit", consumes=MediaType.APPLICATION_JSON_VALUE, produces=MediaType.APPLICATION_JSON_VALUE)

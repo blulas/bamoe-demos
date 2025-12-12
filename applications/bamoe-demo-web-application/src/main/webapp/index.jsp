@@ -65,7 +65,7 @@
         <div class="container-fluid bg-breadcrumb mb-5">
             <div class="container text-center py-5" style="max-width: 900px;">
                 <h4 class="text-white display-4 mb-4 wow fadeInDown" data-wow-delay="0.1s">IBM BAMOE Demo Web Application</h4>
-                <p class="mb-0">This is a sample web-based application, written in Java Server Pages and deployed to Apache Tomcat 10.  The main purpose of this sample application is to show how rules and decision models can eithe be embedded or executed remotely, using IBM Business Automation Manager Open Editions v9.3.0.</p>
+                <p class="mb-0">This is a sample web-based application, written in Java Server Pages and deployed to Apache Tomcat 10.  The main purpose of this sample application is to show how rules and decision models can eithe be embedded or executed remotely, using IBM Business Automation Manager Open Editions v9.3.1.</p>
             </div>
         </div>
         <!-- Header End -->
