@@ -3,8 +3,8 @@
 ################################################
 
 @local.host.url = http://localhost:8083
-@remote.host.url = https://quarkus-hiring-service-bamoe-demos.apps-crc.testing
-@host={{local.host.url}}
+@remote.host.url = https://quarkus-hiring-service-bamoe-v931-demos.apps-crc.testing
+@host={{remote.host.url}}
 @contentType = application/json
 
 ############################################
