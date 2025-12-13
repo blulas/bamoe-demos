@@ -4,7 +4,7 @@
 
 @local.host.url = http://localhost:8083
 @remote.host.url = https://quarkus-hiring-service-bamoe-demos.apps-crc.testing
-@host={{remote.host.url}}
+@host={{local.host.url}}
 @contentType = application/json
 
 ############################################

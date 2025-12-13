@@ -218,6 +218,11 @@
 
 			<dependencies>
 				<dependency>
+					<groupId>com.ibm.bamoe</groupId>
+					<artifactId>bamoe-ilmt-compliance-quarkus-pamoe</artifactId>
+				</dependency>
+
+				<dependency>
 					<groupId>io.quarkus</groupId>
 					<artifactId>quarkus-jdbc-h2</artifactId>
 				</dependency>

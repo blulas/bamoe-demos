@@ -1,4 +1,4 @@
-package com.ibm.bamoe.demos.model;
+package com.ibm.bamoe.demos;
 
 import com.ibm.bamoe.demos.model.Driver;
 import com.ibm.bamoe.demos.model.Violation;

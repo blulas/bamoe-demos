@@ -1,4 +1,4 @@
-package com.ibm.bamoe.demos.rest;
+package com.ibm.bamoe.demos;
 
 import java.util.List;
 
@@ -17,16 +17,15 @@ import jakarta.inject.Inject;
 
 import com.ibm.bamoe.demos.model.Driver;
 import com.ibm.bamoe.demos.model.Violation;
-import com.ibm.bamoe.demos.model.TrafficViolationServiceRequest;
-import com.ibm.bamoe.demos.embedded.TrafficViolationDecisionModel;
 
 @Path("/traffic-violation-service")
 @ApplicationScoped
-public class TrafficViolationServiceResource {
+public class TrafficViolationResource {
 
-    private static final Logger logger = LoggerFactory.getLogger(TrafficViolationServiceResource.class);
+    private static final Logger logger = LoggerFactory.getLogger(TrafficViolationResource.class);
+    private static final double MAX_AVAILABILITY_AMOUNT = 500;
 
-    @Inject TrafficViolationDecisionModel decisionModel;
+    @Inject TrafficViolationService service;
 
     @GET
     @Path("version")
@@ -42,7 +41,7 @@ public class TrafficViolationServiceResource {
     public Response processTrafficViolation(TrafficViolationServiceRequest request) {
 
         try {
-            return Response.ok(decisionModel.processTrafficViolation(request.getViolation(), request.getDriver())).build();
+            return Response.ok(service.processTrafficViolation(request.getViolation(), request.getDriver())).build();
         } catch (Exception e) {
 
             logger.error("Exception: " + e.getMessage());

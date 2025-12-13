@@ -4,7 +4,7 @@
 
 @local.host.url = http://localhost:8082
 @remote.host.url = https://quarkus-traffic-violation-service-bamoe-demos.apps-crc.testing
-@host={{remote.host.url}}
+@host={{local.host.url}}
 @contentType = application/json
 
 ################################################
@@ -19,7 +19,7 @@ content-type: text/plain
 ################################################
 ################################################
 
-POST {{host}}//traffic-violation-service/process-traffic-violation HTTP/1.1
+POST {{host}}/traffic-violation-service/process-traffic-violation HTTP/1.1
 content-type: {{contentType}}
 
 {

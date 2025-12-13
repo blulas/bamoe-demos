@@ -1,4 +1,4 @@
-package com.ibm.bamoe.demos.rest;
+package com.ibm.bamoe.demos;
 
 import java.util.List;
 
@@ -20,12 +20,12 @@ import com.ibm.bamoe.demos.embedded.BankingDepositRules;
 
 @Path("/banking-deposit-service")
 @ApplicationScoped
-public class BankingDepositServiceResource {
+public class BankingDepositResource {
 
-    private static final Logger logger = LoggerFactory.getLogger(BankingDepositServiceResource.class);
+    private static final Logger logger = LoggerFactory.getLogger(BankingDepositResource.class);
     private static final double MAX_AVAILABILITY_AMOUNT = 500;
 
-    @Inject BankingDepositRules ruleSet;
+    @Inject BankingDepositService service;
 
     @GET
     @Path("version")
@@ -41,7 +41,7 @@ public class BankingDepositServiceResource {
     public Response processDeposit(Deposit deposit) {
 
         try {
-            return Response.ok(ruleSet.processDeposit(deposit.getMaxAvailabilityAmount(), deposit)).build();
+            return Response.ok(service.processDeposit(deposit.getMaxAvailabilityAmount(), deposit)).build();
         } catch (Exception e) {
 
             logger.error("Exception: " + e.getMessage());
@@ -56,7 +56,7 @@ public class BankingDepositServiceResource {
     public Response processDeposits(List<Deposit> deposits) {
 
         try {
-            return Response.ok(ruleSet.processDeposits(MAX_AVAILABILITY_AMOUNT, deposits)).build();
+            return Response.ok(service.processDeposits(MAX_AVAILABILITY_AMOUNT, deposits)).build();
         } catch (Exception e) {
 
             logger.error("Exception: " + e.getMessage());

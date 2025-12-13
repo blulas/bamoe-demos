@@ -19,6 +19,7 @@
 		<!-- Java Properties -->
 		<java.version>21</java.version>
 		<jandex-maven-plugin.version>1.2.1</jandex-maven-plugin.version>
+		<jakarta.inject-api.version>2.0.1</jakarta.inject-api.version>
 
 		<!-- Common Maven Plugins -->
 		<maven.compiler.source>${java.version}</maven.compiler.source>
@@ -92,6 +93,13 @@
 			<version>${banking-deposit-rules.version}</version>
 		</dependency>
 
+		<!-- Jakarta -->
+		<dependency>
+			<groupId>jakarta.inject</groupId>
+			<artifactId>jakarta.inject-api</artifactId>
+			<version>${jakarta.inject-api.version}</version>
+		</dependency>
+
 		<!-- Spring Boot Runtime Dependencies -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -119,83 +127,22 @@
 
 	<!-- Profiles -->
    	<profiles>
+		<!-- Profile: DEV - This profile provides the supported dependencies and properties for running this buisness service locally using Dev mode, including a standalone (transient) persistence database -->
         <profile>
-            <id>dev</id>
-            <activation>
-                <activeByDefault>true</activeByDefault>
-            </activation>
+            <id>dev</id><activation><activeByDefault>true</activeByDefault></activation>
             <properties>
                 <spring.profiles.active>dev</spring.profiles.active>
             </properties>
-			<build>
-				<defaultGoal>install</defaultGoal>
-				<finalName>${project.artifactId}</finalName>
-				<resources>
-					<resource>
-						<directory>src/main/resources</directory>
-						<filtering>true</filtering>
-					</resource>
-				</resources>
-				<plugins>
-					<plugin>
-						<groupId>org.kie.kogito</groupId>
-						<artifactId>kogito-maven-plugin</artifactId>
-						<version>${bamoe.version}</version>
-						<executions>
-							<execution>
-								<phase>compile</phase>
-								<goals>
-									<goal>generateModel</goal>
-								</goals>
-							</execution>
-						</executions>
-					</plugin>
-					<plugin>
-						<groupId>org.springframework.boot</groupId>
-						<artifactId>spring-boot-maven-plugin</artifactId>
-						<executions>
-							<execution>
-								<goals>
-									<goal>repackage</goal>
-								</goals>
-							</execution>
-						</executions>
-					</plugin>
-					<plugin>
-						<groupId>org.jboss.jandex</groupId>
-						<artifactId>jandex-maven-plugin</artifactId>
-						<version>${jandex-maven-plugin.version}</version>
-						<executions>
-							<execution>
-								<id>make-index</id>
-								<goals>
-									<goal>jandex</goal>
-								</goals>
-							</execution>
-						</executions>
-					</plugin>
-					<plugin>
-						<artifactId>maven-antrun-plugin</artifactId>
-						<executions>
-							<execution>
-								<phase>package</phase>
-								<goals>
-									<goal>run</goal>
-								</goals>
-								<configuration>
-									<target>
-										<copy includeEmptyDirs="true" overwrite="true" failonerror="false" quiet="true" todir="./docker-compose/svg">
-											<fileset dir="target/classes/META-INF/processSVG/"/>
-										</copy>
-									</target>
-								</configuration>
-							</execution>
-						</executions>
-					</plugin>
-				</plugins>
-			</build>
+
+            <dependencies>
+				<dependency>
+					<groupId>com.ibm.bamoe</groupId>
+					<artifactId>bamoe-ilmt-compliance-spring-boot-dmoe</artifactId>
+				</dependency>
+            </dependencies>
         </profile>
 
+		<!-- Profile: OpenShift - This profile provides the supported dependencies and properties for building and deploying the business service as a container image, specifically for Red Hat OpenShift-->
         <profile>
             <id>openshift</id>
             <properties>
@@ -207,40 +154,19 @@
 				<jkube.enricher.jkube-openshift-route.tlsTermination>${jkube.route.type}</jkube.enricher.jkube-openshift-route.tlsTermination>
 				<jkube.container-image.from>${jkube.base.image}</jkube.container-image.from>
             </properties>
+
 			<build>
 				<defaultGoal>install</defaultGoal>
 				<finalName>${project.artifactId}</finalName>
+
 				<resources>
 					<resource>
 						<directory>src/main/resources</directory>
 						<filtering>true</filtering>
 					</resource>
 				</resources>
+
 				<plugins>
-					<plugin>
-						<groupId>org.kie.kogito</groupId>
-						<artifactId>kogito-maven-plugin</artifactId>
-						<version>${bamoe.version}</version>
-						<executions>
-							<execution>
-								<phase>compile</phase>
-								<goals>
-									<goal>generateModel</goal>
-								</goals>
-							</execution>
-						</executions>
-					</plugin>
-					<plugin>
-						<groupId>org.springframework.boot</groupId>
-						<artifactId>spring-boot-maven-plugin</artifactId>
-						<executions>
-							<execution>
-								<goals>
-									<goal>repackage</goal>
-								</goals>
-							</execution>
-						</executions>
-					</plugin>
 					<plugin>
 						<groupId>org.eclipse.jkube</groupId>
 						<artifactId>openshift-maven-plugin</artifactId>
@@ -282,39 +208,82 @@
 							</execution>
 						</executions>
 					</plugin>
-					<plugin>
-						<groupId>org.jboss.jandex</groupId>
-						<artifactId>jandex-maven-plugin</artifactId>
-						<version>${jandex-maven-plugin.version}</version>
-						<executions>
-							<execution>
-								<id>make-index</id>
-								<goals>
-									<goal>jandex</goal>
-								</goals>
-							</execution>
-						</executions>
-					</plugin>
-					<plugin>
-						<artifactId>maven-antrun-plugin</artifactId>
-						<executions>
-							<execution>
-								<phase>package</phase>
-								<goals>
-									<goal>run</goal>
-								</goals>
-								<configuration>
-									<target>
-										<copy includeEmptyDirs="true" overwrite="true" failonerror="false" quiet="true" todir="./docker-compose/svg">
-											<fileset dir="target/classes/META-INF/processSVG/"/>
-										</copy>
-									</target>
-								</configuration>
-							</execution>
-						</executions>
-					</plugin>
 				</plugins>
 			</build>
         </profile>
     </profiles>
+
+	<!-- Common Build Profiles -->
+	<build>
+		<defaultGoal>install</defaultGoal>
+		<finalName>${project.artifactId}</finalName>
+
+		<resources>
+			<resource>
+				<directory>src/main/resources</directory>
+				<filtering>true</filtering>
+			</resource>
+		</resources>
+
+		<plugins>
+			<plugin>
+				<groupId>org.kie.kogito</groupId>
+				<artifactId>kogito-maven-plugin</artifactId>
+				<version>${bamoe.version}</version>
+				<executions>
+					<execution>
+						<phase>compile</phase>
+						<goals>
+							<goal>generateModel</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+				<executions>
+					<execution>
+						<goals>
+							<goal>repackage</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+
+			<plugin>
+				<groupId>org.jboss.jandex</groupId>
+				<artifactId>jandex-maven-plugin</artifactId>
+				<version>${jandex-maven-plugin.version}</version>
+				<executions>
+					<execution>
+						<id>make-index</id>
+						<goals>
+							<goal>jandex</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+
+			<plugin>
+				<artifactId>maven-antrun-plugin</artifactId>
+				<executions>
+					<execution>
+						<phase>package</phase>
+						<goals>
+							<goal>run</goal>
+						</goals>
+						<configuration>
+							<target>
+								<copy includeEmptyDirs="true" overwrite="true" failonerror="false" quiet="true" todir="./docker-compose/svg">
+									<fileset dir="target/classes/META-INF/processSVG/"/>
+								</copy>
+							</target>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
 </project>
