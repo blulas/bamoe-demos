@@ -23,7 +23,7 @@ mvn clean compile spring-boot:run -Pdev -Dspring.profiles.active=dev
 There are various methods used to test this application's REST API endpoints.  Included in the `src/test/resources/rest` folder is a set of example test cases using the [VS Code REST Client](https://marketplace.visualstudio.com/items?itemName=humao.rest-client).  
 
 ### Start with Swagger
-In order to determine which REST endpoints have been published by the application, you simply need to start your application, either in Quarkus Dev Mode or via the published container image, and then navigate to the published swagger page at:  [Swagger Page](http://localhost:8080/q/swagger-ui/).  
+In order to determine which REST endpoints have been published by the application, you simply need to start your application, either in Quarkus Dev Mode or via the published container image, and then navigate to the published swagger page at:  [Swagger Page](http://localhost:${port}/swagger-ui/index.html).  
 
 ### Create Unit Tests
 You are free to use any unit testing framework you choose, so long as it can call Java or REST API methods programmatically, such as:
