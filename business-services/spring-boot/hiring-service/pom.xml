@@ -96,16 +96,6 @@
             <artifactId>spring-boot-starter-jdbc</artifactId>
         </dependency>
 
-        <dependency>
-            <groupId>org.postgresql</groupId>
-            <artifactId>postgresql</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>org.flywaydb</groupId>
-            <artifactId>flyway-database-postgresql</artifactId>
-        </dependency>
-
         <!-- Add ons -->
         <dependency>
             <groupId>org.kie</groupId>
@@ -190,6 +180,76 @@
                 </dependency>
             </dependencies>
         </profile>
+
+		<!-- Profile: PostgreSQL - This profile configures process persistence support via PostgreSQL -->
+		<profile>
+            <id>postgresql</id>
+            <properties>
+                <spring.profiles.active>postgresql</spring.profiles.active>
+			</properties>
+
+		    <dependencies>
+				<dependency>
+					<groupId>org.postgresql</groupId>
+					<artifactId>postgresql</artifactId>
+				</dependency>
+
+				<dependency>
+					<groupId>org.flywaydb</groupId>
+					<artifactId>flyway-database-postgresql</artifactId>
+				</dependency>
+    		</dependencies>
+		</profile>
+
+		<!-- Profile: MS SQL Server - This profile configures process persistence support via MS SQL Server -->
+		<profile>
+            <id>mssql</id>
+            <properties>
+                <spring.profiles.active>mssql</spring.profiles.active>
+			</properties>
+
+		    <dependencies>
+				<dependency>
+					<groupId>com.microsoft.sqlserver</groupId>
+					<artifactId>mssql-jdbc</artifactId>
+				</dependency>
+
+				<dependency>
+					<groupId>com.ibm.bamoe</groupId>
+					<artifactId>bamoe-mssql-mappings</artifactId>
+				</dependency>
+
+				<dependency>
+					<groupId>org.flywaydb</groupId>
+					<artifactId>flyway-sqlserver</artifactId>
+				</dependency>
+    		</dependencies>
+		</profile>
+
+		<!-- Profile: Oracle - This profile configures process persistence support via Oracle -->
+		<profile>
+            <id>oracle</id>
+            <properties>
+                <spring.profiles.active>oracle</spring.profiles.active>
+			</properties>
+
+		    <dependencies>
+				<dependency>
+					<groupId>com.oracle.database.jdbc</groupId>
+					<artifactId>ojdbc11</artifactId>
+				</dependency>
+
+				<dependency>
+					<groupId>com.ibm.bamoe</groupId>
+					<artifactId>bamoe-oracle-mappings</artifactId>
+				</dependency>
+
+				<dependency>
+					<groupId>org.flywaydb</groupId>
+					<artifactId>flyway-database-oracle</artifactId>
+				</dependency>
+    		</dependencies>
+		</profile>
 
 		<!-- Profile: OpenShift - This profile provides the supported dependencies and properties for building and deploying the business service as a container image, specifically for Red Hat OpenShift-->
         <profile>

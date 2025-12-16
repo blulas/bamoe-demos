@@ -2,14 +2,18 @@
 This module contains an example `Kogito Stateful Process (BPMN) Service`, using using Kogito, BPMN, DMN, packaged as a micro-service JAR, and using the `IBM BAMOE Spring Boot runtime`.
 
 ## How To Build 
-Once you have configured your local development environment, you need to perform a Maven `build` of the repository.  This repository is built using `mvn clean install` by either the CI/CD pipeline or on a local developer workstation.  If deploying artifacts to an enterprise Maven repository, please use `mvn clean deploy`, which requires configuration of the `distributionManagement` section of your project's parent pom.xml.  This project is also configured to generate container images automatically by utilizing the `docker` or `openshift` profiles, as in the following examples:
+Once you have configured your local development environment, you need to perform a Maven `build` of the repository.  This repository is built using `mvn clean install` by either the CI/CD pipeline or on a local developer workstation.  If deploying artifacts to an enterprise Maven repository, please use `mvn clean deploy`, which requires configuration of the `distributionManagement` section of your project's parent pom.xml.  This project is also configured to generate container images automatically by utilizing the `docker` or `openshift` profiles.  In addition, you should also include the persistence profile you need for your assigned database provider, as in the following examples:
 
 ```shell
-mvn clean package -Pdocker -Dspring.profiles.active=docker
+mvn clean package -Popenshift -Dspring-boot.run.profiles=docker,postgresql
+mvn clean package -Popenshift -Dspring-boot.run.profiles=docker,mssql
+mvn clean package -Popenshift -Dspring-boot.run.profiles=docker,oracle
 ```
 
 ```shell
-mvn clean package -Popenshift -Dspring.profiles.active=prod
+mvn clean package -Popenshift -Dspring-boot.run.profiles=openshift,postgresql
+mvn clean package -Popenshift -Dspring-boot.run.profiles=openshift,mssql
+mvn clean package -Popenshift -Dspring-boot.run.profiles=openshift,oracle
 ```
 
 ## How To Run in Development Mode
