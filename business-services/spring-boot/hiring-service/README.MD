@@ -19,6 +19,9 @@ Quarkus comes with a built-in development mode, which means you can update the a
 mvn clean compile spring-boot:run -Pdev -Dspring.profiles.active=dev
 ```
 
+## BAMOE Developer Web Console
+To access the BAMOE Spring Boot Web Console, open a browser and navigate to http://localhost:8080/dev/bamoe-web-console/, assuming your business service is running on port 8080 _(see your local property files for serer port configuration.)_.
+
 ## How To Test
 There are various methods used to test this application's REST API endpoints.  Included in the `src/test/resources/rest` folder is a set of example test cases using the [VS Code REST Client](https://marketplace.visualstudio.com/items?itemName=humao.rest-client).  
 
